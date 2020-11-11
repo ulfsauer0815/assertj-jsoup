@@ -5,6 +5,10 @@ plugins {
     `java-library`
 }
 
+group = "com.github.ulfs"
+version = "0.0.1-SNAPSHOT"
+
+
 java.targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
