@@ -186,7 +186,7 @@ public open class DocumentAssert(
                 substring,
                 "%nExpecting element for%n" +
                         "  <%s>%n" +
-                        "not to contain text%n" +
+                        "to contain text%n" +
                         "  <%s>%n" +
                         "but was%n" +
                         "  <%s>",
