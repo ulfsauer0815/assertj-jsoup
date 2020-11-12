@@ -55,7 +55,7 @@ class DocumentAssertElementContainsTextTest {
     }
 
     @Test
-    fun `should pass if element has text in inner node`() {
+    fun `should pass if element contains text in inner node`() {
         // given
         val document: Document = Jsoup.parse("""<div class="class"><span>text</span></div>""")
 
@@ -67,7 +67,7 @@ class DocumentAssertElementContainsTextTest {
     }
 
     @Test
-    fun `should pass if element has text in inner nodes`() {
+    fun `should pass if element contains text in inner nodes`() {
         // given
         val document: Document = Jsoup.parse("""<div class="class"><span><b>t</b>e<strong>x</strong>t</span></div>""")
 
@@ -79,7 +79,7 @@ class DocumentAssertElementContainsTextTest {
     }
 
     @Test
-    fun `should pass if element matches entire string`() {
+    fun `should pass if element text is the entire text`() {
         // given
         val document: Document = Jsoup.parse("""<div class="class">text</div>""")
 
@@ -91,7 +91,7 @@ class DocumentAssertElementContainsTextTest {
     }
 
     @Test
-    fun `should fail if element contains different text`() {
+    fun `should fail if element does not contain the text`() {
         // given
         val document: Document = Jsoup.parse("""<div class="class">different</div>""")
 
