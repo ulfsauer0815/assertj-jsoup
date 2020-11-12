@@ -347,7 +347,7 @@ public open class DocumentAssert(
         }
 
         if (!selection.hasAttr("class")) {
-            failWithAttributeNotFound(cssSelector, "class", selection)
+            failWithAttributeNotFound("class", cssSelector, selection)
             return this
         }
 
@@ -377,7 +377,6 @@ public open class DocumentAssert(
         }
 
         if (!selection.hasAttr("class")) {
-            failWithAttributeNotFound(cssSelector, "class", selection)
             return this
         }
 

@@ -43,6 +43,18 @@ class DocumentAssertElementNotHasClassTest {
     }
 
     @Test
+    fun `should pass if element does not have class attribute`() {
+        // given
+        val document: Document = Jsoup.parse("""<div id="id">""")
+
+        // when / then
+        assertThat(document).elementNotHasClass("#id", "content")
+
+        // then
+        // no exception is thrown
+    }
+
+    @Test
     fun `should fail if element has class`() {
         // given
         val document: Document = Jsoup.parse("""<div class="class content">text</div>""")
