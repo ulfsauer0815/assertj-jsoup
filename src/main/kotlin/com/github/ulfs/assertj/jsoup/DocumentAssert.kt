@@ -1,17 +1,15 @@
 package com.github.ulfs.assertj.jsoup
 
 import org.assertj.core.api.AbstractAssert
-import org.assertj.core.api.Assertions.assertThat
-import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
-open class DocumentAssertions(
+open class DocumentAssert(
     actual: Document?
-) : AbstractAssert<DocumentAssertions, Document>(actual, DocumentAssertions::class.java) {
+) : AbstractAssert<DocumentAssert, Document>(actual, DocumentAssert::class.java) {
 
-    fun elementExists(cssSelector: String): DocumentAssertions = apply {
+    fun elementExists(cssSelector: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -20,7 +18,7 @@ open class DocumentAssertions(
         }
     }
 
-    fun elementExists(cssSelector: String, count: Int): DocumentAssertions = apply {
+    fun elementExists(cssSelector: String, count: Int): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -42,7 +40,7 @@ open class DocumentAssertions(
         }
     }
 
-    fun elementAttributeExists(cssSelector: String, attribute: String): DocumentAssertions = apply {
+    fun elementAttributeExists(cssSelector: String, attribute: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -55,7 +53,7 @@ open class DocumentAssertions(
         }
     }
 
-    fun elementAttributeNotExists(cssSelector: String, attribute: String): DocumentAssertions = apply {
+    fun elementAttributeNotExists(cssSelector: String, attribute: String): DocumentAssert = apply {
         isNotNull
 
         elementExists(cssSelector)
@@ -77,7 +75,7 @@ open class DocumentAssertions(
         }
     }
 
-    fun elementNotExists(cssSelector: String): DocumentAssertions = also {
+    fun elementNotExists(cssSelector: String): DocumentAssert = also {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -435,21 +433,6 @@ open class DocumentAssertions(
     }
 
     companion object {
-        @JvmStatic
-        fun assertThat(actual: Document?): DocumentAssertions = DocumentAssertions(actual)
-
-        @JvmStatic
-        fun assertThatDocument(actual: String?): DocumentAssertions = DocumentAssertions(Jsoup.parse(actual))
-            .also { assertThat(actual).withFailMessage("%nExpecting document but found%n  null").isNotNull }
-
-        @JvmStatic
-        fun qa(value: String): String = "*[data-qa=$value]"
-
-        fun assertThatDocumentSpec(
-            actual: String?,
-            assert: DocumentAssertionsSpec.() -> DocumentAssertionsSpec
-        ) = DocumentSoftAssertions.assertThatDocumentSpec(actual, false, assert)
-
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")
 
         private fun maskSelection(selection: Element) = selection.toString().prependIndent("  ")

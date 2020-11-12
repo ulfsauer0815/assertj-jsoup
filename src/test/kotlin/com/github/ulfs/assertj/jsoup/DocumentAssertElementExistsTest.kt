@@ -1,13 +1,13 @@
 package com.github.ulfs.assertj.jsoup
 
-import com.github.ulfs.assertj.jsoup.DocumentAssertions.Companion.assertThat
+import com.github.ulfs.assertj.jsoup.Assertions.Companion.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.test.Test
 
-class DocumentAssertionsElementExistsTest {
+class DocumentAssertElementExistsTest {
 
     @Test
     fun `should fail if element is null`() {
