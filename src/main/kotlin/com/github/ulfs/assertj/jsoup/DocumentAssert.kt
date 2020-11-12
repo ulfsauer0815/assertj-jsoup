@@ -5,11 +5,11 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
-open class DocumentAssert(
+public open class DocumentAssert(
     actual: Document?
 ) : AbstractAssert<DocumentAssert, Document>(actual, DocumentAssert::class.java) {
 
-    fun elementExists(cssSelector: String): DocumentAssert = apply {
+    public fun elementExists(cssSelector: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -18,7 +18,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementExists(cssSelector: String, count: Int): DocumentAssert = apply {
+    public fun elementExists(cssSelector: String, count: Int): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -40,7 +40,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementAttributeExists(cssSelector: String, attribute: String): DocumentAssert = apply {
+    public fun elementAttributeExists(cssSelector: String, attribute: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -53,7 +53,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementAttributeNotExists(cssSelector: String, attribute: String): DocumentAssert = apply {
+    public fun elementAttributeNotExists(cssSelector: String, attribute: String): DocumentAssert = apply {
         isNotNull
 
         elementExists(cssSelector)
@@ -75,7 +75,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementNotExists(cssSelector: String): DocumentAssert = also {
+    public fun elementNotExists(cssSelector: String): DocumentAssert = also {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -93,7 +93,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementHasText(cssSelector: String, string: String) = apply {
+    public fun elementHasText(cssSelector: String, string: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -120,7 +120,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementHasText(cssSelector: String, vararg strings: String) = apply {
+    public fun elementHasText(cssSelector: String, vararg strings: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -169,7 +169,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementContainsText(cssSelector: String, substring: String) = apply {
+    public fun elementContainsText(cssSelector: String, substring: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -196,7 +196,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementMatchesText(cssSelector: String, regex: Regex) = apply {
+    public fun elementMatchesText(cssSelector: String, regex: Regex): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -223,7 +223,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementAttributeHasText(cssSelector: String, attribute: String, text: String) = apply {
+    public fun elementAttributeHasText(cssSelector: String, attribute: String, text: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -257,7 +257,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementAttributeHasText(cssSelector: String, attribute: String, vararg attrValues: String) = apply {
+    public fun elementAttributeHasText(cssSelector: String, attribute: String, vararg attrValues: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -336,7 +336,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementHasClass(cssSelector: String, className: String) = apply {
+    public fun elementHasClass(cssSelector: String, className: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -365,7 +365,7 @@ open class DocumentAssert(
         }
     }
 
-    fun elementNotHasClass(cssSelector: String, className: String) = apply {
+    public fun elementNotHasClass(cssSelector: String, className: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -432,7 +432,7 @@ open class DocumentAssert(
         )
     }
 
-    companion object {
+    private companion object {
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")
 
         private fun maskSelection(selection: Element) = selection.toString().prependIndent("  ")

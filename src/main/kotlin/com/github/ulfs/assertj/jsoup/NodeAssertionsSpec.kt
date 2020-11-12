@@ -3,57 +3,58 @@ package com.github.ulfs.assertj.jsoup
 import org.jsoup.nodes.Document
 
 @DocumentAssertionsMarker
-data class NodeAssertionsSpec(
+public data class NodeAssertionsSpec(
     private val softAssertions: DocumentSoftAssertions,
     private val document: Document,
     private val cssSelector: String
 ) {
-    fun exists(): NodeAssertionsSpec = apply {
+    public fun exists(): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementExists(cssSelector)
     }
 
-    fun exists(count: Int) = apply {
+    public fun exists(count: Int): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementExists(cssSelector, count)
     }
 
-    fun notExists() = apply {
+    public fun notExists(): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementNotExists(cssSelector)
     }
 
-    fun containsText(substring: String) = apply {
+    public fun containsText(substring: String): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementContainsText(cssSelector, substring)
     }
 
-    fun hasText(text: String) = apply {
+    public fun hasText(text: String): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementHasText(cssSelector, text)
     }
 
-    fun hasText(vararg texts: String) = apply {
+    public fun hasText(vararg texts: String): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementHasText(cssSelector, *texts)
     }
 
-    fun hasText(obj: Any?) = apply {
+    public fun hasText(obj: Any?): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementHasText(cssSelector, obj?.toString() ?: "")
     }
 
-    fun hasClass(name: String) = apply {
+    public fun hasClass(name: String): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementHasClass(cssSelector, name)
     }
 
-    fun notHasClass(name: String) = apply {
+    public fun notHasClass(name: String): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementNotHasClass(cssSelector, name)
     }
 
-    fun hasAttribute(name: String) = apply {
+    public fun hasAttribute(name: String): NodeAssertionsSpec = apply {
         attribute(name) { exists() }
     }
 
-    fun notHasAttribute(name: String) = apply {
+    public fun notHasAttribute(name: String): NodeAssertionsSpec = apply {
         attribute(name) { notExists() }
     }
 
-    fun attribute(attributeName: String, assert: AttributeAssertionsSpec.() -> AttributeAssertionsSpec) = apply {
-        val spec = AttributeAssertionsSpec(softAssertions, document, cssSelector, attributeName)
-        spec.assert()
-    }
+    public fun attribute(attributeName: String, assert: AttributeAssertionsSpec.() -> AttributeAssertionsSpec): NodeAssertionsSpec =
+        apply {
+            val spec = AttributeAssertionsSpec(softAssertions, document, cssSelector, attributeName)
+            spec.assert()
+        }
 }

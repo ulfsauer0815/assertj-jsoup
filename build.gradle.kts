@@ -22,6 +22,10 @@ tasks.withType<KotlinCompile> {
     }
 }
 
+kotlin {
+    explicitApi()
+}
+
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 

@@ -3,29 +3,29 @@ package com.github.ulfs.assertj.jsoup
 import org.jsoup.nodes.Document
 
 @DocumentAssertionsMarker
-data class AttributeAssertionsSpec(
+public data class AttributeAssertionsSpec(
     private val softAssertions: DocumentSoftAssertions,
     private val document: Document,
     private val cssSelector: String,
     private val attributeName: String
 ) {
-    fun exists() = apply {
+    public fun exists(): AttributeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementAttributeExists(cssSelector, attributeName)
     }
 
-    fun notExists() = apply {
+    public fun notExists(): AttributeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementAttributeExists(cssSelector, attributeName)
     }
 
-    fun hasText(text: String) = apply {
+    public fun hasText(text: String): AttributeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementAttributeHasText(cssSelector, attributeName, text)
     }
 
-    fun hasText(vararg texts: String) = apply {
+    public fun hasText(vararg texts: String): AttributeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementAttributeHasText(cssSelector, attributeName, *texts)
     }
 
-    fun hasText(obj: Any?) = apply {
+    public fun hasText(obj: Any?): AttributeAssertionsSpec = apply {
         hasText(obj?.toString() ?: "")
     }
 }
