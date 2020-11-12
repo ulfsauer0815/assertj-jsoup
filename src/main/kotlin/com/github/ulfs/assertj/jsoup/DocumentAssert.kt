@@ -197,7 +197,7 @@ public open class DocumentAssert(
         }
     }
 
-    public fun elementMatchesText(cssSelector: String, regex: Regex): DocumentAssert = apply {
+    public fun elementMatchesText(cssSelector: String, regex: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
@@ -207,13 +207,13 @@ public open class DocumentAssert(
         }
 
         val text = selection.text()
-        if (!text.contains(regex)) {
+        if (!text.contains(regex.toRegex())) {
             failWithActualExpectedAndMessage(
                 text,
                 regex,
                 "%nExpecting element for%n" +
                         "  <%s>%n" +
-                        "not to match regex%n" +
+                        "to match regex%n" +
                         "  <%s>%n" +
                         "but was%n" +
                         "  <%s>",
