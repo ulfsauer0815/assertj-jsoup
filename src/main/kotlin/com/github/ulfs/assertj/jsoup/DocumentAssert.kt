@@ -40,6 +40,24 @@ public open class DocumentAssert(
         }
     }
 
+    public fun elementNotExists(cssSelector: String): DocumentAssert = also {
+        isNotNull
+
+        val selection = actual.selectFirst(cssSelector)
+        if (selection != null) {
+            failWithActualExpectedAndMessage(
+                selection,
+                null,
+                "%nExpecting element for%n" +
+                        "  <%s>%n" +
+                        "to be absent, but was%n" +
+                        "%s",
+                cssSelector,
+                maskSelection(selection)
+            )
+        }
+    }
+
     public fun elementAttributeExists(cssSelector: String, attribute: String): DocumentAssert = apply {
         isNotNull
 
@@ -75,24 +93,6 @@ public open class DocumentAssert(
         }
     }
 
-    public fun elementNotExists(cssSelector: String): DocumentAssert = also {
-        isNotNull
-
-        val selection = actual.selectFirst(cssSelector)
-        if (selection != null) {
-            failWithActualExpectedAndMessage(
-                selection,
-                null,
-                "%nExpecting element for%n" +
-                        "  <%s>%n" +
-                        "to be absent, but was%n" +
-                        "%s",
-                cssSelector,
-                maskSelection(selection)
-            )
-        }
-    }
-
     public fun elementHasText(cssSelector: String, string: String): DocumentAssert = apply {
         isNotNull
 
@@ -103,7 +103,7 @@ public open class DocumentAssert(
         }
 
         val text = selection.text()
-        if (!text.contains(string)) {
+        if (text != string) {
             failWithActualExpectedAndMessage(
                 text,
                 string,
@@ -112,7 +112,7 @@ public open class DocumentAssert(
                         "to have text%n" +
                         "  <%s>%n" +
                         "but was%n" +
-                        "<%s>",
+                        "  <%s>",
                 cssSelector,
                 string,
                 text
@@ -139,8 +139,8 @@ public open class DocumentAssert(
                     "%nExpecting element at position" +
                             " %s " +
                             "in list for%n" +
-                            "<%s>%n" +
-                            "to not have text%n" +
+                            "  <%s>%n" +
+                            "to have text%n" +
                             "  <%s>%n" +
                             "but was%n" +
                             "  <%s>",
@@ -156,15 +156,16 @@ public open class DocumentAssert(
             val rest = strings.drop(selection.size)
             failWithMessage(
                 "%nExpecting" +
-                        " <%s> remaining elements:%n" +
-                        "  <%s>%n" +
-                        "but was%n" +
-                        "  <%s>" +
-                        "for <%s>",
+                        " %s more element(s) for%n" +
+                        "  %s%n" +
+                        "to be%n" +
+                        "%s%n" +
+                        "in list%n" +
+                        "%s",
                 rest.size,
-                rest,
-                selection,
-                cssSelector
+                cssSelector,
+                maskSelection(rest),
+                maskSelection(selection)
             )
         }
     }
@@ -436,5 +437,7 @@ public open class DocumentAssert(
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")
 
         private fun maskSelection(selection: Element) = selection.toString().prependIndent("  ")
+
+        private fun maskSelection(selection: List<String>) = selection.toString().prependIndent("  ")
     }
 }
