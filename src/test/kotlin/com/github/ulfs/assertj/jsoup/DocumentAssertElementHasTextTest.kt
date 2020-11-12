@@ -43,6 +43,26 @@ class DocumentAssertElementHasTextTest {
     }
 
     @Test
+    fun `should fail if element does not exist for multiple strings`() {
+        // given
+        val document: Document = Jsoup.parse("")
+
+        // when / then
+        assertThatThrownBy {
+            assertThat(document).elementHasText(".class", "text", "text")
+        }
+            .isInstanceOf(AssertionError::class.java)
+            .hasMessage(
+                """
+                
+                Expecting element for
+                  <.class>
+                but found nothing
+                """.trimIndent()
+            )
+    }
+
+    @Test
     fun `should pass if element has text`() {
         // given
         val document: Document = Jsoup.parse("""<div class="class">text</div>""")

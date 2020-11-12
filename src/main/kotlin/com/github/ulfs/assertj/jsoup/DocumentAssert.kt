@@ -120,16 +120,18 @@ public open class DocumentAssert(
         }
     }
 
-    public fun elementHasText(cssSelector: String, vararg strings: String): DocumentAssert = apply {
+    public fun elementHasText(cssSelector: String, string0: String, vararg strings: String): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
-        if (selection == null) {
+        if (selection.isEmpty()) {
             failWithElementNotFound(cssSelector)
             return this
         }
 
-        strings.zip(selection).onEachIndexed { index, matchPair ->
+        val allStrings = listOf(string0) + strings
+
+        allStrings.zip(selection).onEachIndexed { index, matchPair ->
             val elementText = matchPair.second.text()
             val expectedText = matchPair.first
             if (elementText != expectedText) {
@@ -152,8 +154,8 @@ public open class DocumentAssert(
             }
         }
 
-        if (selection.size < strings.size) {
-            val rest = strings.drop(selection.size)
+        if (selection.size < allStrings.size) {
+            val rest = allStrings.drop(selection.size)
             failWithMessage(
                 "%nExpecting" +
                         " %s more element(s) for%n" +
