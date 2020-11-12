@@ -358,10 +358,10 @@ public open class DocumentAssert(
                         "to include class%n" +
                         "  <%s>%n" +
                         "but found%n" +
-                        "  <%s>",
+                        "%s",
                 cssSelector,
                 className,
-                selection
+                maskSelection(selection)
             )
         }
     }
