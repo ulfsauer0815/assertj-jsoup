@@ -260,7 +260,12 @@ public open class DocumentAssert(
         }
     }
 
-    public fun elementAttributeHasText(cssSelector: String, attribute: String, vararg attrValues: String): DocumentAssert = apply {
+    public fun elementAttributeHasText(
+        cssSelector: String,
+        attribute: String,
+        attrValue0: String,
+        vararg attrValues: String
+    ): DocumentAssert = apply {
         isNotNull
 
         val selection = actual.select(cssSelector)
@@ -269,7 +274,9 @@ public open class DocumentAssert(
             return this
         }
 
-        attrValues.zip(selection).onEachIndexed { index, matchPair ->
+        val allAttrValues = listOf(attrValue0) + attrValues
+
+        allAttrValues.zip(selection).onEachIndexed { index, matchPair ->
             val element = matchPair.second
 
             // attribute not found
@@ -321,8 +328,8 @@ public open class DocumentAssert(
             }
         }
 
-        if (selection.size < attrValues.size) {
-            val rest = attrValues.drop(selection.size)
+        if (selection.size < allAttrValues.size) {
+            val rest = allAttrValues.drop(selection.size)
             failWithMessage(
                 "%nExpecting" +
                         " <%s> remaining elements:%n" +
@@ -397,42 +404,37 @@ public open class DocumentAssert(
         }
     }
 
-    private fun failWithElementNotFound(cssSelector: String) {
-        failWithMessage(
-            "%nExpecting element for%n" +
-                    "  <%s>%n" +
-                    "but found nothing",
-            cssSelector
-        )
-    }
 
-    private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) {
-        failWithMessage(
-            "%nExpecting attribute%n" +
-                    "  <%s>%n" +
-                    "on elements for%n" +
-                    "  <%s>%n" +
-                    "but found%n" +
-                    "  <%s>",
-            attribute,
-            cssSelector,
-            selections
-        )
-    }
+    private fun failWithElementNotFound(cssSelector: String) = failWithMessage(
+        "%nExpecting element for%n" +
+                "  <%s>%n" +
+                "but found nothing",
+        cssSelector
+    )
 
-    private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) {
-        failWithMessage(
-            "%nExpecting attribute%n" +
-                    "  <%s>%n" +
-                    "on element for%n" +
-                    "  <%s>%n" +
-                    "but found%n" +
-                    "  <%s>",
-            attribute,
-            cssSelector,
-            selection
-        )
-    }
+    private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) = failWithMessage(
+        "%nExpecting attribute%n" +
+                "  <%s>%n" +
+                "on elements for%n" +
+                "  <%s>%n" +
+                "but found%n" +
+                "  <%s>",
+        attribute,
+        cssSelector,
+        selections
+    )
+
+    private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) = failWithMessage(
+        "%nExpecting attribute%n" +
+                "  <%s>%n" +
+                "on element for%n" +
+                "  <%s>%n" +
+                "but found%n" +
+                "  <%s>",
+        attribute,
+        cssSelector,
+        selection
+    )
 
     private companion object {
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")
