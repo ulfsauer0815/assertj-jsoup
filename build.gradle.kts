@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
@@ -9,10 +10,15 @@ group = "com.github.ulfs"
 version = "0.0.1-SNAPSHOT"
 
 
-java.targetCompatibility = JavaVersion.VERSION_1_8
-
 repositories {
     jcenter()
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
