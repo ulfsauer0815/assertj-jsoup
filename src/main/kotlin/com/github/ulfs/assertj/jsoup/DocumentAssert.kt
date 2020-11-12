@@ -64,6 +64,7 @@ public open class DocumentAssert(
         val selection = actual.select(cssSelector)
         if (selection.isEmpty()) {
             failWithElementNotFound(cssSelector)
+            return this
         }
 
         if (!selection.hasAttr(attribute)) {
@@ -151,6 +152,7 @@ public open class DocumentAssert(
                     expectedText,
                     elementText
                 )
+                return this
             }
         }
 
@@ -300,6 +302,7 @@ public open class DocumentAssert(
                     element,
                     selection
                 )
+                return this
             }
 
             // attribute value does not match
@@ -325,6 +328,7 @@ public open class DocumentAssert(
                     attrValue,
                     selection
                 )
+                return this
             }
         }
 
