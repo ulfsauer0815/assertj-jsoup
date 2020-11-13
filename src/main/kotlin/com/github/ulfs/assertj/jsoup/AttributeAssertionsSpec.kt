@@ -21,8 +21,8 @@ public data class AttributeAssertionsSpec(
         softAssertions.assertThat(document).elementAttributeHasText(cssSelector, attributeName, text)
     }
 
-    public fun hasText(text0: String, vararg texts: String): AttributeAssertionsSpec = apply {
-        softAssertions.assertThat(document).elementAttributeHasText(cssSelector, attributeName, text0, *texts)
+    public fun hasText(vararg texts: String): AttributeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementAttributeHasText(cssSelector, attributeName, *texts)
     }
 
     public fun hasText(obj: Any?): AttributeAssertionsSpec = apply {

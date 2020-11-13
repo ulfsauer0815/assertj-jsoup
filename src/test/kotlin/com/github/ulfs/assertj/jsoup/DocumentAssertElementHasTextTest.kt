@@ -43,6 +43,18 @@ class DocumentAssertElementHasTextTest {
     }
 
     @Test
+    fun `should throw if insufficient parameters are given`() {
+        // given
+        val document: Document = Jsoup.parse("")
+
+        // when / then
+        assertThatThrownBy {
+            assertThat(document).elementHasText(".class")
+        }
+            .isInstanceOf(IllegalArgumentException::class.java)
+    }
+
+    @Test
     fun `should fail if element does not exist for multiple strings`() {
         // given
         val document: Document = Jsoup.parse("")

@@ -121,8 +121,12 @@ public open class DocumentAssert(
         }
     }
 
-    public fun elementHasText(cssSelector: String, string0: String, vararg strings: String): DocumentAssert = apply {
+    public fun elementHasText(cssSelector: String, vararg strings: String): DocumentAssert = apply {
         isNotNull
+
+        if (strings.isEmpty()) {
+            throw IllegalArgumentException("elementHasText expects at least two arguments")
+        }
 
         val selection = actual.select(cssSelector)
         if (selection.isEmpty()) {
@@ -130,9 +134,7 @@ public open class DocumentAssert(
             return this
         }
 
-        val allStrings = listOf(string0) + strings
-
-        allStrings.zip(selection).onEachIndexed { index, matchPair ->
+        strings.zip(selection).onEachIndexed { index, matchPair ->
             val elementText = matchPair.second.text()
             val expectedText = matchPair.first
             if (elementText != expectedText) {
@@ -156,8 +158,8 @@ public open class DocumentAssert(
             }
         }
 
-        if (selection.size < allStrings.size) {
-            val rest = allStrings.drop(selection.size)
+        if (selection.size < strings.size) {
+            val rest = strings.drop(selection.size)
             failWithMessage(
                 "%nExpecting" +
                         " %s more element(s) for%n" +
@@ -265,10 +267,13 @@ public open class DocumentAssert(
     public fun elementAttributeHasText(
         cssSelector: String,
         attribute: String,
-        attrValue0: String,
         vararg attrValues: String
     ): DocumentAssert = apply {
         isNotNull
+
+        if (attrValues.isEmpty()) {
+            throw IllegalArgumentException("elementAttributeHasText expects at least two arguments")
+        }
 
         val selection = actual.select(cssSelector)
         if (selection == null) {
@@ -276,9 +281,7 @@ public open class DocumentAssert(
             return this
         }
 
-        val allAttrValues = listOf(attrValue0) + attrValues
-
-        allAttrValues.zip(selection).onEachIndexed { index, matchPair ->
+        attrValues.zip(selection).onEachIndexed { index, matchPair ->
             val element = matchPair.second
 
             // attribute not found
@@ -332,8 +335,8 @@ public open class DocumentAssert(
             }
         }
 
-        if (selection.size < allAttrValues.size) {
-            val rest = allAttrValues.drop(selection.size)
+        if (selection.size < attrValues.size) {
+            val rest = attrValues.drop(selection.size)
             failWithMessage(
                 "%nExpecting" +
                         " <%s> remaining elements:%n" +

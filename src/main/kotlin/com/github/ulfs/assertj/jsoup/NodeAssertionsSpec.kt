@@ -28,8 +28,8 @@ public data class NodeAssertionsSpec(
         softAssertions.assertThat(document).elementHasText(cssSelector, text)
     }
 
-    public fun hasText(text0: String, vararg texts: String): NodeAssertionsSpec = apply {
-        softAssertions.assertThat(document).elementHasText(cssSelector, text0, *texts)
+    public fun hasText(vararg texts: String): NodeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementHasText(cssSelector, *texts)
     }
 
     public fun hasText(obj: Any?): NodeAssertionsSpec = apply {
