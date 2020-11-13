@@ -14,7 +14,7 @@ public data class AttributeAssertionsSpec(
     }
 
     public fun notExists(): AttributeAssertionsSpec = apply {
-        softAssertions.assertThat(document).elementAttributeExists(cssSelector, attributeName)
+        softAssertions.assertThat(document).elementAttributeNotExists(cssSelector, attributeName)
     }
 
     public fun hasText(text: String): AttributeAssertionsSpec = apply {
