@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  tests:
+  test-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: test and publish coverage
+      - name: Test and publish coverage
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        run: ./gradlew test jacocoTestReport coverallsJacoco
+        run: ./gradlew check jacocoTestReport coverallsJacoco
