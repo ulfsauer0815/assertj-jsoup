@@ -1,10 +1,10 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
 
     `java-library`
+    `maven-publish`
 }
 
 group = "com.github.ulfs"
@@ -26,6 +26,10 @@ kotlin {
     explicitApi()
 }
 
+java {
+    withSourcesJar()
+}
+
 dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
@@ -36,4 +40,12 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("io.mockk:mockk:1.10.2")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>(rootProject.name) {
+            from(components["java"])
+        }
+    }
 }
