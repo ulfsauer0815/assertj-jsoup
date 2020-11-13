@@ -5,6 +5,16 @@ plugins {
 
     `java-library`
     `maven-publish`
+    jacoco
+    id("com.github.nbaztec.coveralls-jacoco") version "1.2.4"
+}
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+    }
 }
 
 group = "com.github.ulfs"
@@ -13,6 +23,8 @@ version = "0.0.1-SNAPSHOT"
 
 repositories {
     jcenter()
+    mavenCentral()
+    google()
 }
 
 tasks.withType<KotlinCompile> {
@@ -47,5 +59,12 @@ publishing {
         create<MavenPublication>(rootProject.name) {
             from(components["java"])
         }
+    }
+}
+
+tasks.withType<JacocoReport> {
+    reports {
+        xml.isEnabled = true
+        html.isEnabled = true
     }
 }
