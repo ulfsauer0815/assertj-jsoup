@@ -1,5 +1,6 @@
 package com.github.ulfs.assertj.jsoup
 
+import com.github.ulfs.test.coverage.Generated
 import org.assertj.core.api.AbstractAssert
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -413,14 +414,18 @@ public open class DocumentAssert(
     }
 
 
-    private fun failWithElementNotFound(cssSelector: String) = failWithMessage(
+    @Generated
+    @Suppress("warnings")
+    private inline fun failWithElementNotFound(cssSelector: String) = failWithMessage(
         "%nExpecting element for%n" +
                 "  <%s>%n" +
                 "but found nothing",
         cssSelector
     )
 
-    private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) = failWithMessage(
+    @Generated
+    @Suppress("warnings")
+    private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) = failWithMessage(
         "%nExpecting attribute%n" +
                 "  <%s>%n" +
                 "on elements for%n" +
@@ -432,7 +437,9 @@ public open class DocumentAssert(
         maskSelection(selections)
     )
 
-    private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) = failWithMessage(
+    @Generated
+    @Suppress("warnings")
+    private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) = failWithMessage(
         "%nExpecting attribute%n" +
                 "  <%s>%n" +
                 "on element for%n" +
