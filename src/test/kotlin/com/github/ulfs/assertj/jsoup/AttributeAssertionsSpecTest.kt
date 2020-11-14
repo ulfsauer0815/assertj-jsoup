@@ -88,10 +88,42 @@ class AttributeAssertionsSpecTest {
         val spec = spec()
 
         // when
-        spec.hasText("text" as Any)
+        spec.hasText(42)
 
         // then
-        verify { softAssertions.assertThat(any<Document>()).elementAttributeHasText("selector", "name", "text") }
+        verify { softAssertions.assertThat(any<Document>()).elementAttributeHasText("selector", "name", "42") }
+    }
+
+    @Test
+    fun `should call elementHasText with null`() {
+        // given
+        every {
+            softAssertions.assertThat(any<Document>()).elementAttributeHasText(any(), any(), any())
+        } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasText(null)
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementAttributeHasText("selector", "name", "") }
+    }
+
+    @Test
+    fun `should call elementHasText with toString returning null`() {
+        // given
+        every {
+            softAssertions.assertThat(any<Document>()).elementAttributeHasText(any(), any(), any())
+        } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasText(ClassWithNullToString())
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementAttributeHasText("selector", "name", "") }
     }
 
 
