@@ -10,7 +10,7 @@ class DocumentAssertionsSpecTest {
     @Test
     fun `should create NodeSpec`() {
         // given
-        val softAssertions: DocumentSoftAssertions = mockk(relaxed = true)
+        val softAssertions: DocumentSoftAssertions = mockk()
         val document: Document = mockk()
 
         val spec = DocumentAssertionsSpec(

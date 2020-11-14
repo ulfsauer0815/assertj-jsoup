@@ -111,7 +111,7 @@ class AttributeAssertionsSpecTest {
     }
 
     @Test
-    fun `should call elementHasText with toString returning null`() {
+    fun `should call elementHasText with argument returning null for toString`() {
         // given
         every {
             softAssertions.assertThat(any<Document>()).elementAttributeHasText(any(), any(), any())
