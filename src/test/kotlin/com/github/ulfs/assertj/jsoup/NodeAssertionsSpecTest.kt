@@ -1,5 +1,6 @@
 package com.github.ulfs.assertj.jsoup
 
+import com.github.ulfs.assertj.jsoup.test.ClassWithNullToString
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify

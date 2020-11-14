@@ -52,6 +52,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("io.mockk:mockk:1.10.2")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect:1.4.10")
 }
 
 publishing {
