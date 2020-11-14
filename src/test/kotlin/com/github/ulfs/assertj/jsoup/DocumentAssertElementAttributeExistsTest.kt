@@ -60,7 +60,7 @@ class DocumentAssertElementAttributeExistsTest {
                 on elements for
                   <.class>
                 but found
-                  <<div class="class"></div>>
+                  <div class="class"></div>
                 """.trimIndent()
             )
     }

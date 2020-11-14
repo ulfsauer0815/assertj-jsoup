@@ -234,13 +234,13 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.select(cssSelector)
-        if (selection == null) {
+        if (selection.isEmpty()) {
             failWithElementNotFound(cssSelector)
             return this
         }
 
         if (!selection.hasAttr(attribute)) {
-            failWithAttributeNotFound(cssSelector, attribute, selection)
+            failWithAttributeNotFound(attribute, cssSelector, selection)
             return this
         }
 
@@ -255,7 +255,8 @@ public open class DocumentAssert(
                         "  <%s>%n" +
                         "to be %n" +
                         "  <%s>%n" +
-                        "but was <%s>",
+                        "but was%n" +
+                        "  <%s>",
                 attribute,
                 cssSelector,
                 text,
@@ -276,7 +277,7 @@ public open class DocumentAssert(
         }
 
         val selection = actual.select(cssSelector)
-        if (selection == null) {
+        if (selection.isEmpty()) {
             failWithElementNotFound(cssSelector)
             return this
         }
@@ -292,18 +293,18 @@ public open class DocumentAssert(
                     "%nExpecting element at position" +
                             " %s " +
                             "in list for%n" +
-                            "<%s>%n" +
+                            "  <%s>%n" +
                             "to have attribute%n" +
                             "  <%s>%n" +
-                            "but did not:%n" +
+                            "but was%n" +
                             "  <%s>%n" +
                             "in list%n" +
-                            "  <%s>",
+                            "%s",
                     index,
                     cssSelector,
                     attribute,
                     element,
-                    selection
+                    maskSelection(selection)
                 )
                 return this
             }
@@ -318,18 +319,18 @@ public open class DocumentAssert(
                     "%nExpecting element at position" +
                             " %s " +
                             "in list for%n" +
-                            "<%s>%n" +
+                            "  <%s>%n" +
                             "to have attribute value%n" +
                             "  <%s>%n" +
                             "but was%n" +
                             "  <%s>%n" +
                             "in list%n" +
-                            "  <%s>",
+                            "%s",
                     index,
                     cssSelector,
                     expectedAttrValue,
                     attrValue,
-                    selection
+                    maskSelection(selection)
                 )
                 return this
             }
@@ -339,16 +340,16 @@ public open class DocumentAssert(
             val rest = attrValues.drop(selection.size)
             failWithMessage(
                 "%nExpecting" +
-                        " <%s> remaining elements:%n" +
+                        " %s remaining elements:%n" +
+                        "  <%s>%n" +
+                        "in list for%n" +
                         "  <%s>%n" +
                         "but was%n" +
-                        "  <%s>%n" +
-                        "for%n" +
                         "  <%s>",
                 rest.size,
+                cssSelector,
                 rest,
-                selection,
-                cssSelector
+                maskSelection(selection)
             )
         }
     }
@@ -425,10 +426,10 @@ public open class DocumentAssert(
                 "on elements for%n" +
                 "  <%s>%n" +
                 "but found%n" +
-                "  <%s>",
+                "%s",
         attribute,
         cssSelector,
-        selections
+        maskSelection(selections)
     )
 
     private fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) = failWithMessage(
