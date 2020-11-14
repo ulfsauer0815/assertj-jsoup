@@ -1,7 +1,7 @@
 package com.github.ulfs.assertj.jsoup
 
-import com.github.ulfs.assertj.jsoup.test.ReflectionUtils
 import com.github.ulfs.assertj.jsoup.test.ReflectionUtils.Companion.callGetter
+import io.mockk.clearStaticMockk
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
@@ -15,10 +15,9 @@ import org.assertj.core.api.SoftAssertionsProvider
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
+import org.junit.AfterClass
+import org.junit.BeforeClass
 import java.util.function.Consumer
-import kotlin.reflect.full.memberProperties
-import kotlin.reflect.jvm.isAccessible
-import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -26,16 +25,9 @@ class AssertionsTest {
 
     @BeforeTest
     fun setup() {
-        mockkStatic(Jsoup::class)
-        mockkStatic(SoftAssertionsProvider::class)
-        mockkConstructor(DocumentSoftAssertions::class)
-    }
-
-    @AfterTest
-    fun tearDown() {
-        unmockkStatic(Jsoup::class)
-        unmockkStatic(SoftAssertionsProvider::class)
-        unmockkConstructor(DocumentSoftAssertions::class)
+        clearStaticMockk(Jsoup::class)
+        clearStaticMockk(SoftAssertionsProvider::class)
+        clearStaticMockk(DocumentSoftAssertions::class)
     }
 
 
@@ -171,5 +163,24 @@ class AssertionsTest {
 
         assertThat(documentAssert).isNotNull
         assertThat(softly).isTrue
+    }
+
+
+    companion object {
+        @JvmStatic
+        @BeforeClass
+        fun setupAll() {
+            mockkStatic(Jsoup::class)
+            mockkStatic(SoftAssertionsProvider::class)
+            mockkConstructor(DocumentSoftAssertions::class)
+        }
+
+        @JvmStatic
+        @AfterClass
+        fun tearDownAll() {
+            unmockkStatic(Jsoup::class)
+            unmockkStatic(SoftAssertionsProvider::class)
+            unmockkConstructor(DocumentSoftAssertions::class)
+        }
     }
 }
