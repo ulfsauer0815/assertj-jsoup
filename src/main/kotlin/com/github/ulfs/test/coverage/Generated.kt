@@ -6,5 +6,4 @@ import kotlin.annotation.AnnotationRetention.RUNTIME
  * Used to ignore functions in coverage reports
  */
 @Retention(RUNTIME)
-internal annotation class Generated {
-}
+internal annotation class Generated

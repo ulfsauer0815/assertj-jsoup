@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>LongMethod:DocumentAssert.kt$DocumentAssert$public fun elementAttributeHasText( cssSelector: String, attribute: String, vararg attrValues: String ): DocumentAssert</ID>
+    <ID>MaxLineLength:Assertions.kt$Assertions.Companion$@JvmStatic @JvmOverloads public</ID>
+    <ID>TooManyFunctions:DocumentAssert.kt$DocumentAssert : AbstractAssert</ID>
+    <ID>TooManyFunctions:NodeAssertionsSpec.kt$NodeAssertionsSpec</ID>
+    <ID>UtilityClassWithPublicConstructor:Assertions.kt$Assertions</ID>
+  </CurrentIssues>
+</SmellBaseline>

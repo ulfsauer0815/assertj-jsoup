@@ -416,40 +416,43 @@ public open class DocumentAssert(
 
     @Generated
     @Suppress("warnings")
-    private inline fun failWithElementNotFound(cssSelector: String) = failWithMessage(
-        "%nExpecting element for%n" +
-                "  <%s>%n" +
-                "but found nothing",
-        cssSelector
-    )
+    private inline fun failWithElementNotFound(cssSelector: String) =
+        failWithMessage(
+            "%nExpecting element for%n" +
+                    "  <%s>%n" +
+                    "but found nothing",
+            cssSelector
+        )
 
     @Generated
     @Suppress("warnings")
-    private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) = failWithMessage(
-        "%nExpecting attribute%n" +
-                "  <%s>%n" +
-                "on elements for%n" +
-                "  <%s>%n" +
-                "but found%n" +
-                "%s",
-        attribute,
-        cssSelector,
-        maskSelection(selections)
-    )
+    private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) =
+        failWithMessage(
+            "%nExpecting attribute%n" +
+                    "  <%s>%n" +
+                    "on elements for%n" +
+                    "  <%s>%n" +
+                    "but found%n" +
+                    "%s",
+            attribute,
+            cssSelector,
+            maskSelection(selections)
+        )
 
     @Generated
     @Suppress("warnings")
-    private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) = failWithMessage(
-        "%nExpecting attribute%n" +
-                "  <%s>%n" +
-                "on element for%n" +
-                "  <%s>%n" +
-                "but found%n" +
-                "  <%s>",
-        attribute,
-        cssSelector,
-        selection
-    )
+    private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) =
+        failWithMessage(
+            "%nExpecting attribute%n" +
+                    "  <%s>%n" +
+                    "on element for%n" +
+                    "  <%s>%n" +
+                    "but found%n" +
+                    "  <%s>",
+            attribute,
+            cssSelector,
+            selection
+        )
 
     private companion object {
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")

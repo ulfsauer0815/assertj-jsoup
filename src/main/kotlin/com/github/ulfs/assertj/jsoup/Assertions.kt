@@ -6,7 +6,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.util.function.Consumer
 
-public open class Assertions private constructor(){
+public open class Assertions private constructor() {
 
     public companion object {
         @JvmStatic
