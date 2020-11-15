@@ -288,25 +288,7 @@ public open class DocumentAssert(
 
             // attribute not found
             if (!element.hasAttr(attribute)) {
-                failWithActualExpectedAndMessage(
-                    null,
-                    attribute,
-                    "%nExpecting element at position" +
-                            " %s " +
-                            "in list for%n" +
-                            "  <%s>%n" +
-                            "to have attribute%n" +
-                            "  <%s>%n" +
-                            "but was%n" +
-                            "  <%s>%n" +
-                            "in list%n" +
-                            "%s",
-                    index,
-                    cssSelector,
-                    attribute,
-                    element,
-                    maskSelection(selection)
-                )
+                failWithAttributeNotFoundAtPosition(attribute, index, cssSelector, element, selection)
                 return this
             }
 
@@ -314,44 +296,14 @@ public open class DocumentAssert(
             val attrValue = element.attr(attribute)
             val expectedAttrValue = matchPair.first
             if (attrValue != expectedAttrValue) {
-                failWithActualExpectedAndMessage(
-                    attrValue,
-                    expectedAttrValue,
-                    "%nExpecting element at position" +
-                            " %s " +
-                            "in list for%n" +
-                            "  <%s>%n" +
-                            "to have attribute value%n" +
-                            "  <%s>%n" +
-                            "but was%n" +
-                            "  <%s>%n" +
-                            "in list%n" +
-                            "%s",
-                    index,
-                    cssSelector,
-                    expectedAttrValue,
-                    attrValue,
-                    maskSelection(selection)
-                )
+                failWithAttributeValueAtPositionNotFound(attrValue, expectedAttrValue, index, cssSelector, selection)
                 return this
             }
         }
 
         if (selection.size < attrValues.size) {
             val rest = attrValues.drop(selection.size)
-            failWithMessage(
-                "%nExpecting" +
-                        " %s remaining elements:%n" +
-                        "  <%s>%n" +
-                        "in list for%n" +
-                        "  <%s>%n" +
-                        "but was%n" +
-                        "  <%s>",
-                rest.size,
-                cssSelector,
-                rest,
-                maskSelection(selection)
-            )
+            failWithRemainingElementsNotFound(rest, cssSelector, selection)
         }
     }
 
@@ -453,6 +405,89 @@ public open class DocumentAssert(
             cssSelector,
             selection
         )
+
+    @Generated
+    @Suppress("warnings")
+    private inline fun failWithAttributeNotFoundAtPosition(
+        attribute: String,
+        index: Int,
+        cssSelector: String,
+        element: Element,
+        selection: Elements
+    ) {
+        failWithActualExpectedAndMessage(
+            null,
+            attribute,
+            "%nExpecting element at position" +
+                    " %s " +
+                    "in list for%n" +
+                    "  <%s>%n" +
+                    "to have attribute%n" +
+                    "  <%s>%n" +
+                    "but was%n" +
+                    "  <%s>%n" +
+                    "in list%n" +
+                    "%s",
+            index,
+            cssSelector,
+            attribute,
+            element,
+            maskSelection(selection)
+        )
+    }
+
+    @Generated
+    @Suppress("warnings")
+    private inline fun failWithAttributeValueAtPositionNotFound(
+        attrValue: String,
+        expectedAttrValue: String,
+        index: Int,
+        cssSelector: String,
+        selection: Elements
+    ) {
+        failWithActualExpectedAndMessage(
+            attrValue,
+            expectedAttrValue,
+            "%nExpecting element at position" +
+                    " %s " +
+                    "in list for%n" +
+                    "  <%s>%n" +
+                    "to have attribute value%n" +
+                    "  <%s>%n" +
+                    "but was%n" +
+                    "  <%s>%n" +
+                    "in list%n" +
+                    "%s",
+            index,
+            cssSelector,
+            expectedAttrValue,
+            attrValue,
+            maskSelection(selection)
+        )
+    }
+
+    @Generated
+    @Suppress("warnings")
+    private inline fun failWithRemainingElementsNotFound(
+        rest: List<String>,
+        cssSelector: String,
+        selection: Elements
+    ) {
+        failWithMessage(
+            "%nExpecting" +
+                    " %s remaining elements:%n" +
+                    "  <%s>%n" +
+                    "in list for%n" +
+                    "  <%s>%n" +
+                    "but was%n" +
+                    "  <%s>",
+            rest.size,
+            cssSelector,
+            rest,
+            maskSelection(selection)
+        )
+    }
+
 
     private companion object {
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")
