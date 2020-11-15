@@ -4,6 +4,5 @@
   <CurrentIssues>
     <ID>TooManyFunctions:DocumentAssert.kt$DocumentAssert : AbstractAssert</ID>
     <ID>TooManyFunctions:NodeAssertionsSpec.kt$NodeAssertionsSpec</ID>
-    <ID>UtilityClassWithPublicConstructor:Assertions.kt$Assertions</ID>
   </CurrentIssues>
 </SmellBaseline>

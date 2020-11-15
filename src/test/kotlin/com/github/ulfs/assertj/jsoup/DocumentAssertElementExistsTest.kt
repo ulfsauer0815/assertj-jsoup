@@ -1,6 +1,6 @@
 package com.github.ulfs.assertj.jsoup
 
-import com.github.ulfs.assertj.jsoup.Assertions.Companion.assertThat
+import com.github.ulfs.assertj.jsoup.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
