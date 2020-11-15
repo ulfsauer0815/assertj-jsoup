@@ -36,6 +36,7 @@ public object Assertions {
         softAssertions.assertAll()
     }
 
+    @JvmSynthetic
     public fun assertThatDocumentSpec(
         actual: String?,
         softly: Boolean = false,
