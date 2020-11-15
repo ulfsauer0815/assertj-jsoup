@@ -2,7 +2,6 @@
 <SmellBaseline>
   <ManuallySuppressedIssues></ManuallySuppressedIssues>
   <CurrentIssues>
-    <ID>MaxLineLength:Assertions.kt$Assertions.Companion$@JvmStatic @JvmOverloads public</ID>
     <ID>TooManyFunctions:DocumentAssert.kt$DocumentAssert : AbstractAssert</ID>
     <ID>TooManyFunctions:NodeAssertionsSpec.kt$NodeAssertionsSpec</ID>
     <ID>UtilityClassWithPublicConstructor:Assertions.kt$Assertions</ID>

@@ -26,7 +26,11 @@ public open class Assertions private constructor() {
 
         @JvmStatic
         @JvmOverloads
-        public fun assertThatDocument(actual: String?, softly: Boolean = false, assert: DocumentAssert.() -> DocumentAssert) {
+        public fun assertThatDocument(
+            actual: String?,
+            softly: Boolean = false,
+            assert: DocumentAssert.() -> DocumentAssert
+        ) {
             val softAssertions = DocumentSoftAssertions(softly)
             val assertions = softAssertions.assertThatDocument(actual)
             assertions.assert()
