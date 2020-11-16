@@ -60,4 +60,6 @@ public data class NodeAssertionsSpec(
             val spec = AttributeAssertionsSpec(softAssertions, document, cssSelector, attributeName)
             spec.assert()
         }
+
+    public fun attribute(attributeName: String): NodeAssertionsSpec = attribute(attributeName) { exists() }
 }
