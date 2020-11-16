@@ -14,4 +14,4 @@ jobs:
       - name: Test and publish coverage
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-        run: ./gradlew check jacocoTestReport coverallsJacoco
+        run: ./gradlew check jacocoTestReport coverallsJacoco -x detekt
