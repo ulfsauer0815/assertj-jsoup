@@ -12,4 +12,10 @@ public data class DocumentAssertionsSpec(
         spec.assert()
         return this
     }
+
+    public fun node(cssSelector: String): DocumentAssertionsSpec {
+        val spec = NodeAssertionsSpec(softAssertions, document, cssSelector)
+        spec.exists()
+        return this
+    }
 }
