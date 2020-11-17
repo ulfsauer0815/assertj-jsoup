@@ -98,20 +98,20 @@ class DocumentAssertElementAttributeHasTextTest {
             .isInstanceOf(AssertionError::class.java)
             .hasMessage(
                 """
-                        
-                        Expecting element at position 0 in list for
-                          <.class>
-                        to have attribute
-                          <attr>
-                        but was
-                          <<div class="class">
-                         <span attr="value"></span>
-                        </div>>
-                        in list
-                          <div class="class">
-                           <span attr="value"></span>
-                          </div>
-                        """.trimIndent()
+                
+                Expecting element at position 0 in list for
+                  <.class>
+                to have attribute
+                  <attr>
+                but was
+                  <<div class="class">
+                 <span attr="value"></span>
+                </div>>
+                in list
+                  <div class="class">
+                   <span attr="value"></span>
+                  </div>
+                    """.trimIndent()
             )
     }
 
@@ -132,7 +132,7 @@ class DocumentAssertElementAttributeHasTextTest {
                   <attr>
                 on element for
                   <.class>
-                to be 
+                to be
                   <al>
                 but was
                   <value>
@@ -157,7 +157,7 @@ class DocumentAssertElementAttributeHasTextTest {
                   <attr>
                 on element for
                   <.class>
-                to be 
+                to be
                   <value>
                 but was
                   <different>

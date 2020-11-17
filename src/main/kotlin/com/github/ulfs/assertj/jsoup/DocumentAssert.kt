@@ -254,7 +254,7 @@ public open class DocumentAssert(
                         "  <%s>%n" +
                         "on element for%n" +
                         "  <%s>%n" +
-                        "to be %n" +
+                        "to be%n" +
                         "  <%s>%n" +
                         "but was%n" +
                         "  <%s>",
