@@ -346,6 +346,45 @@ public open class DocumentAssert(
         }
     }
 
+    public fun elementAttributeMatchesText(
+        cssSelector: String,
+        attribute: String,
+        regex: String
+    ): DocumentAssert = apply {
+        isNotNull
+
+        val selection = actual.select(cssSelector)
+        if (selection.isEmpty()) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        if (!selection.hasAttr(attribute)) {
+            failWithAttributeNotFound(attribute, cssSelector, selection)
+            return this
+        }
+
+        val attrValue = selection.attr(attribute)
+        if (!attrValue.matches(regex.toRegex())) {
+            failWithActualExpectedAndMessage(
+                attrValue,
+                regex,
+                "%nExpecting attribute%n" +
+                        "  <%s>%n" +
+                        "on element for%n" +
+                        "  <%s>%n" +
+                        "to match regex%n" +
+                        "  <%s>%n" +
+                        "but was%n" +
+                        "  <%s>",
+                attribute,
+                cssSelector,
+                regex,
+                attrValue
+            )
+        }
+    }
+
 
     public fun elementHasClass(cssSelector: String, className: String): DocumentAssert = apply {
         isNotNull

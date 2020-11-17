@@ -143,6 +143,22 @@ class AttributeAssertionsSpecTest {
         verify { softAssertions.assertThat(any<Document>()).elementAttributeContainsText("selector", "name", "text") }
     }
 
+    @Test
+    fun `should call elementAttributeMatchesText`() {
+        // given
+        every {
+            softAssertions.assertThat(any<Document>()).elementAttributeMatchesText(any(), any(), any())
+        } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.matchesText("v[ae]lue")
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementAttributeMatchesText("selector", "name", "v[ae]lue") }
+    }
+
 
     private fun spec() = AttributeAssertionsSpec(
         softAssertions = softAssertions,

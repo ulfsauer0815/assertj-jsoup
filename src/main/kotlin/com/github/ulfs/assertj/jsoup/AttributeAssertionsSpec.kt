@@ -32,4 +32,8 @@ public data class AttributeAssertionsSpec(
     public fun containsText(substring: String): AttributeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementAttributeContainsText(cssSelector, attributeName, substring)
     }
+
+    public fun matchesText(regex: String): AttributeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementAttributeMatchesText(cssSelector, attributeName, regex)
+    }
 }
