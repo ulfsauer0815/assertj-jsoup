@@ -165,6 +165,30 @@ class AssertionsTest {
         assertThat(softly).isTrue
     }
 
+    @Test
+    fun `should return DocumentSoftAssertions assertThatSpec`() {
+        every { SoftAssertionsProvider.assertSoftly(any<Class<DocumentSoftAssertions>>(), any()) } returns mockk()
+
+        var documentAssert: DocumentAssertionsSpec? = null
+
+        // when
+        Assertions.assertThatSpec(Jsoup.parse("html")) {
+            documentAssert = this
+            this
+        }
+
+        // then
+        verify {
+            anyConstructed<DocumentSoftAssertions>().assertAll()
+        }
+
+        val softAssertions = callGetter<DocumentSoftAssertions>(documentAssert!!, "softAssertions")
+        val softly = callGetter<Boolean>(softAssertions, "softly")
+
+        assertThat(documentAssert).isNotNull
+        assertThat(softly).isFalse
+    }
+
 
     companion object {
         @JvmStatic

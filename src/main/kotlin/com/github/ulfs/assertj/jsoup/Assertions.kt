@@ -42,11 +42,20 @@ public object Assertions {
         softly: Boolean = false,
         assert: DocumentAssertionsSpec.() -> DocumentAssertionsSpec
     ) {
-        val softAssertions = DocumentSoftAssertions(softly)
         assertThat(actual)
             .withFailMessage("%nExpecting document but found%n  null")
             .isNotNull
         val document = Jsoup.parse(actual)
+        assertThatSpec(document, softly, assert)
+    }
+
+    @JvmSynthetic
+    public fun assertThatSpec(
+        document: Document,
+        softly: Boolean = false,
+        assert: DocumentAssertionsSpec.() -> DocumentAssertionsSpec
+    ) {
+        val softAssertions = DocumentSoftAssertions(softly)
         val spec = DocumentAssertionsSpec(softAssertions, document)
         spec.assert()
         softAssertions.assertAll()
