@@ -28,4 +28,8 @@ public data class AttributeAssertionsSpec(
     public fun hasText(obj: Any?): AttributeAssertionsSpec = apply {
         hasText(obj?.toString() ?: "")
     }
+
+    public fun containsText(substring: String): AttributeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementAttributeContainsText(cssSelector, attributeName, substring)
+    }
 }

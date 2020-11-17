@@ -307,6 +307,46 @@ public open class DocumentAssert(
         }
     }
 
+    public fun elementAttributeContainsText(
+        cssSelector: String,
+        attribute: String,
+        substring: String
+    ): DocumentAssert = apply {
+        isNotNull
+
+        val selection = actual.select(cssSelector)
+        if (selection.isEmpty()) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        if (!selection.hasAttr(attribute)) {
+            failWithAttributeNotFound(attribute, cssSelector, selection)
+            return this
+        }
+
+        val attrValue = selection.attr(attribute)
+        if (!attrValue.contains(substring)) {
+            failWithActualExpectedAndMessage(
+                attrValue,
+                substring,
+                "%nExpecting attribute%n" +
+                        "  <%s>%n" +
+                        "on element for%n" +
+                        "  <%s>%n" +
+                        "to contain%n" +
+                        "  <%s>%n" +
+                        "but was%n" +
+                        "  <%s>",
+                attribute,
+                cssSelector,
+                substring,
+                attrValue
+            )
+        }
+    }
+
+
     public fun elementHasClass(cssSelector: String, className: String): DocumentAssert = apply {
         isNotNull
 
