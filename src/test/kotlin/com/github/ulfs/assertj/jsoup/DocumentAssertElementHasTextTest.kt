@@ -1,7 +1,10 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.assertj.core.api.SoftAssertionError
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -25,14 +28,17 @@ class DocumentAssertElementHasTextTest {
     @Test
     fun `should fail if element does not exist`() {
         // given
-        val document: Document = Jsoup.parse("")
+        val document = Jsoup.parse("")
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class", "text")
+            assertThat(document, true) {
+                elementHasText(".class", "text")
+            }
         }
-            .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .isInstanceOf(SoftAssertionError::class.java)
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -49,7 +55,9 @@ class DocumentAssertElementHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class")
+            assertThat(document, true) {
+                elementHasText(".class")
+            }
         }
             .isInstanceOf(IllegalArgumentException::class.java)
     }
@@ -61,10 +69,13 @@ class DocumentAssertElementHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class", "text", "text")
+            assertThat(document, true) {
+                elementHasText(".class", "text", "text")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -80,7 +91,9 @@ class DocumentAssertElementHasTextTest {
         val document: Document = Jsoup.parse("""<div class="class">text</div>""")
 
         // when
-        assertThat(document).elementHasText(".class", "text")
+        assertThat(document, true) {
+            elementHasText(".class", "text")
+        }
 
         // then
         // no exception is thrown
@@ -92,7 +105,9 @@ class DocumentAssertElementHasTextTest {
         val document: Document = Jsoup.parse("""<div class="class"><span>text</span></div>""")
 
         // when
-        assertThat(document).elementHasText(".class", "text")
+        assertThat(document, true) {
+            elementHasText(".class", "text")
+        }
 
         // then
         // no exception is thrown
@@ -104,7 +119,9 @@ class DocumentAssertElementHasTextTest {
         val document: Document = Jsoup.parse("""<div class="class"><span><b>t</b>e<strong>x</strong>t</span></div>""")
 
         // when
-        assertThat(document).elementHasText(".class", "text")
+        assertThat(document, true) {
+            elementHasText(".class", "text")
+        }
 
         // then
         // no exception is thrown
@@ -117,10 +134,13 @@ class DocumentAssertElementHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class", "ex")
+            assertThat(document, true) {
+                elementHasText(".class", "ex")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -140,10 +160,13 @@ class DocumentAssertElementHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class", "text")
+            assertThat(document, true) {
+                elementHasText(".class", "text")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -168,7 +191,9 @@ class DocumentAssertElementHasTextTest {
         )
 
         // when
-        assertThat(document).elementHasText(".class", "this", "is", "text")
+        assertThat(document, true) {
+            elementHasText(".class", "this", "is", "text")
+        }
 
         // then
         // no exception is thrown
@@ -187,10 +212,13 @@ class DocumentAssertElementHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class", "this", "is", "text")
+            assertThat(document, true) {
+                elementHasText(".class", "this", "is", "text")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element at position 1 in list for
@@ -215,10 +243,13 @@ class DocumentAssertElementHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasText(".class", "this", "is", "text")
+            assertThat(document, true) {
+                elementHasText(".class", "this", "is", "text")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting 1 more element(s) for
@@ -249,7 +280,9 @@ class DocumentAssertElementHasTextTest {
         )
 
         // when / then
-        assertThat(document).elementHasText(".class", "this", "is", "text")
+        assertThat(document, true) {
+            elementHasText(".class", "this", "is", "text")
+        }
 
         // then
         // no exception is thrown

@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementAttributeNotExistsTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeNotExists(".class", "attr")
+            assertThat(document, true) {
+                elementAttributeNotExists(".class", "attr")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -48,7 +53,9 @@ class DocumentAssertElementAttributeNotExistsTest {
         val document: Document = Jsoup.parse("""<div class="class"/>""")
 
         // when
-        assertThat(document).elementAttributeNotExists(".class", "attr")
+        assertThat(document, true) {
+            elementAttributeNotExists(".class", "attr")
+        }
 
         // then
         // no exception is thrown
@@ -61,10 +68,13 @@ class DocumentAssertElementAttributeNotExistsTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeNotExists(".class", "attr")
+            assertThat(document, true) {
+                elementAttributeNotExists(".class", "attr")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute

@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -49,7 +54,9 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr")
+            }
         }
             .isInstanceOf(IllegalArgumentException::class.java)
     }
@@ -61,10 +68,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "value", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "value", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -80,7 +90,9 @@ class DocumentAssertElementAttributeHasTextTest {
         val document: Document = Jsoup.parse("""<div class="class" attr="value"></div>""")
 
         // when
-        assertThat(document).elementAttributeHasText(".class", "attr", "value")
+        assertThat(document, true) {
+            elementAttributeHasText(".class", "attr", "value")
+        }
 
         // then
         // no exception is thrown
@@ -93,10 +105,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "value", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "value", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element at position 0 in list for
@@ -122,10 +137,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "al")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "al")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute
@@ -147,10 +165,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute
@@ -172,10 +193,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute
@@ -200,7 +224,9 @@ class DocumentAssertElementAttributeHasTextTest {
         )
 
         // when
-        assertThat(document).elementAttributeHasText(".class", "attr", "this", "is", "value")
+        assertThat(document, true) {
+            elementAttributeHasText(".class", "attr", "this", "is", "value")
+        }
 
         // then
         // no exception is thrown
@@ -219,10 +245,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "this", "is", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "this", "is", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element at position 1 in list for
@@ -251,10 +280,13 @@ class DocumentAssertElementAttributeHasTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeHasText(".class", "attr", "this", "is", "value")
+            assertThat(document, true) {
+                elementAttributeHasText(".class", "attr", "this", "is", "value")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting 1 remaining elements:
@@ -281,7 +313,9 @@ class DocumentAssertElementAttributeHasTextTest {
         )
 
         // when / then
-        assertThat(document).elementAttributeHasText(".class", "attr", "this", "is", "value")
+        assertThat(document, true) {
+            elementAttributeHasText(".class", "attr", "this", "is", "value")
+        }
 
         // then
         // no exception is thrown

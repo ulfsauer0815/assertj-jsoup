@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementMatchesTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementMatchesText(".class", "ex")
+            assertThat(document, true) {
+                elementMatchesText(".class", "ex")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -48,7 +53,9 @@ class DocumentAssertElementMatchesTextTest {
         val document: Document = Jsoup.parse("""<div class="class">text</div>""")
 
         // when
-        assertThat(document).elementMatchesText(".class", "t[ae]xt")
+        assertThat(document, true) {
+            elementMatchesText(".class", "t[ae]xt")
+        }
 
         // then
         // no exception is thrown
@@ -60,7 +67,9 @@ class DocumentAssertElementMatchesTextTest {
         val document: Document = Jsoup.parse("""<div class="class"><span>text</span></div>""")
 
         // when
-        assertThat(document).elementMatchesText(".class", "t[ae]xt")
+        assertThat(document, true) {
+            elementMatchesText(".class", "t[ae]xt")
+        }
 
         // then
         // no exception is thrown
@@ -72,7 +81,9 @@ class DocumentAssertElementMatchesTextTest {
         val document: Document = Jsoup.parse("""<div class="class"><span><b>t</b>e<strong>x</strong>t</span></div>""")
 
         // when
-        assertThat(document).elementMatchesText(".class", "t[ae]xt")
+        assertThat(document, true) {
+            elementMatchesText(".class", "t[ae]xt")
+        }
 
         // then
         // no exception is thrown
@@ -85,10 +96,13 @@ class DocumentAssertElementMatchesTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementMatchesText(".class", "t[ae]xt")
+            assertThat(document, true) {
+                elementMatchesText(".class", "t[ae]xt")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for

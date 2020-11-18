@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementAttributeMatchesTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            assertThat(document, true) {
+                elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -48,7 +53,9 @@ class DocumentAssertElementAttributeMatchesTextTest {
         val document: Document = Jsoup.parse("""<div class="class" attr="value"></div>""")
 
         // when
-        assertThat(document).elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+        assertThat(document, true) {
+            elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+        }
 
         // then
         // no exception is thrown
@@ -61,10 +68,13 @@ class DocumentAssertElementAttributeMatchesTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            assertThat(document, true) {
+                elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute
@@ -86,10 +96,13 @@ class DocumentAssertElementAttributeMatchesTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            assertThat(document, true) {
+                elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute
@@ -111,10 +124,13 @@ class DocumentAssertElementAttributeMatchesTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            assertThat(document, true) {
+                elementAttributeMatchesText(".class", "attr", "v[ae]lue")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute

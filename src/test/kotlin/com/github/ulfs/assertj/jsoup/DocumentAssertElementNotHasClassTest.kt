@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementNotHasClassTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementNotHasClass(".class", "content")
+            assertThat(document, true) {
+                elementNotHasClass(".class", "content")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -48,7 +53,9 @@ class DocumentAssertElementNotHasClassTest {
         val document: Document = Jsoup.parse("""<div id="id">""")
 
         // when / then
-        assertThat(document).elementNotHasClass("#id", "content")
+        assertThat(document, true) {
+            elementNotHasClass("#id", "content")
+        }
 
         // then
         // no exception is thrown
@@ -61,10 +68,13 @@ class DocumentAssertElementNotHasClassTest {
 
         // when
         assertThatThrownBy {
-            assertThat(document).elementNotHasClass(".class", "content")
+            assertThat(document, true) {
+                elementNotHasClass(".class", "content")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                         
                         Expecting element for
@@ -88,7 +98,9 @@ class DocumentAssertElementNotHasClassTest {
         val document: Document = Jsoup.parse("""<div class="class"><span class="content">text</span></div>""")
 
         // when
-        assertThat(document).elementNotHasClass(".class", "content")
+        assertThat(document, true) {
+            elementNotHasClass(".class", "content")
+        }
 
         // then
         // no exception is thrown
@@ -100,6 +112,11 @@ class DocumentAssertElementNotHasClassTest {
         val document: Document = Jsoup.parse("""<div class="class cont">text</div>""")
 
         // when / then
-        assertThat(document).elementNotHasClass(".class", "content")
+        assertThat(document, true) {
+            elementNotHasClass(".class", "content")
+        }
+
+        // then
+        // no exception is thrown
     }
 }

@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementExistsTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementExists(".class")
+            assertThat(document, true) {
+                elementExists(".class")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -48,7 +53,9 @@ class DocumentAssertElementExistsTest {
         val document: Document = Jsoup.parse("""<div class="class"/>""")
 
         // when
-        assertThat(document).elementExists(".class")
+        assertThat(document, true) {
+            elementExists(".class")
+        }
 
         // then
         // no exception is thrown
@@ -60,7 +67,9 @@ class DocumentAssertElementExistsTest {
         val document: Document = Jsoup.parse("""<div class="class"/><div class="class"/>""")
 
         // when
-        assertThat(document).elementExists(".class")
+        assertThat(document, true) {
+            elementExists(".class")
+        }
 
         // then
         // no exception is thrown
@@ -73,10 +82,13 @@ class DocumentAssertElementExistsTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementExists(".class", 2)
+            assertThat(document, true) {
+                elementExists(".class", 2)
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting elements for
@@ -98,10 +110,13 @@ class DocumentAssertElementExistsTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementExists(".class", 2)
+            assertThat(document, true) {
+                elementExists(".class", 2)
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting elements for
@@ -124,7 +139,9 @@ class DocumentAssertElementExistsTest {
         val document: Document = Jsoup.parse("""<div class="class"/><div class="class"/>""")
 
         // when
-        assertThat(document).elementExists(".class", 2)
+        assertThat(document, true) {
+            elementExists(".class", 2)
+        }
 
         // then
         // no exception is thrown

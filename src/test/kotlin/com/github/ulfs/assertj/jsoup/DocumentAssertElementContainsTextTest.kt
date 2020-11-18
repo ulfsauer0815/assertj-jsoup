@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementContainsTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementContainsText(".class", "ex")
+            assertThat(document, true) {
+                elementContainsText(".class", "ex")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -48,7 +53,9 @@ class DocumentAssertElementContainsTextTest {
         val document: Document = Jsoup.parse("""<div class="class">text</div>""")
 
         // when
-        assertThat(document).elementContainsText(".class", "ex")
+        assertThat(document, true) {
+            elementContainsText(".class", "ex")
+        }
 
         // then
         // no exception is thrown
@@ -60,7 +67,9 @@ class DocumentAssertElementContainsTextTest {
         val document: Document = Jsoup.parse("""<div class="class"><span>text</span></div>""")
 
         // when
-        assertThat(document).elementContainsText(".class", "ex")
+        assertThat(document, true) {
+            elementContainsText(".class", "ex")
+        }
 
         // then
         // no exception is thrown
@@ -72,7 +81,9 @@ class DocumentAssertElementContainsTextTest {
         val document: Document = Jsoup.parse("""<div class="class"><span><b>t</b>e<strong>x</strong>t</span></div>""")
 
         // when
-        assertThat(document).elementContainsText(".class", "ex")
+        assertThat(document, true) {
+            elementContainsText(".class", "ex")
+        }
 
         // then
         // no exception is thrown
@@ -84,7 +95,9 @@ class DocumentAssertElementContainsTextTest {
         val document: Document = Jsoup.parse("""<div class="class">text</div>""")
 
         // when / then
-        assertThat(document).elementContainsText(".class", "text")
+        assertThat(document, true) {
+            elementContainsText(".class", "text")
+        }
 
         // then
         // no exception is thrown
@@ -97,10 +110,13 @@ class DocumentAssertElementContainsTextTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementContainsText(".class", "text")
+            assertThat(document, true) {
+                elementContainsText(".class", "text")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for

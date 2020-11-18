@@ -1,6 +1,8 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.Assertions.assertThat
+import com.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
+import com.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
@@ -29,10 +31,13 @@ class DocumentAssertElementHasClassTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasClass(".class", "content")
+            assertThat(document, true) {
+                elementHasClass(".class", "content")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -49,10 +54,13 @@ class DocumentAssertElementHasClassTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasClass("#id", "content")
+            assertThat(document, true) {
+                elementHasClass("#id", "content")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting attribute
@@ -71,7 +79,9 @@ class DocumentAssertElementHasClassTest {
         val document: Document = Jsoup.parse("""<div class="class content">text</div>""")
 
         // when
-        assertThat(document).elementHasClass(".class", "content")
+        assertThat(document, true) {
+            elementHasClass(".class", "content")
+        }
 
         // then
         // no exception is thrown
@@ -84,10 +94,13 @@ class DocumentAssertElementHasClassTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasClass(".class", "content")
+            assertThat(document, true) {
+                elementHasClass(".class", "content")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
@@ -109,10 +122,13 @@ class DocumentAssertElementHasClassTest {
 
         // when / then
         assertThatThrownBy {
-            assertThat(document).elementHasClass(".class", "content")
+            assertThat(document, true) {
+                elementHasClass(".class", "content")
+            }
         }
             .isInstanceOf(AssertionError::class.java)
-            .hasMessage(
+            .hasOneError()
+            .hasErrorWithMessage(
                 """
                 
                 Expecting element for
