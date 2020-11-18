@@ -36,6 +36,19 @@ public object Assertions {
         softAssertions.assertAll()
     }
 
+    @JvmStatic
+    @JvmOverloads
+    public fun assertThat(
+        actual: Document,
+        softly: Boolean = false,
+        assert: DocumentAssert.() -> DocumentAssert
+    ) {
+        val softAssertions = DocumentSoftAssertions(softly)
+        val assertions = softAssertions.assertThat(actual)
+        assertions.assert()
+        softAssertions.assertAll()
+    }
+
     @JvmSynthetic
     public fun assertThatDocumentSpec(
         actual: String?,

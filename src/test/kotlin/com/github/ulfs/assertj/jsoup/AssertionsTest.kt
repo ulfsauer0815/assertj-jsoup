@@ -1,6 +1,7 @@
 package com.github.ulfs.assertj.jsoup
 
 import com.github.ulfs.assertj.jsoup.test.ReflectionUtils.Companion.callGetter
+import io.mockk.called
 import io.mockk.clearStaticMockk
 import io.mockk.every
 import io.mockk.mockk
@@ -107,6 +108,50 @@ class AssertionsTest {
 
         // when
         Assertions.assertThatDocument("html") {
+            documentAssert = this
+            this
+        }
+
+        // then
+        assertThat(documentAssert).isEqualTo(assert)
+        verify {
+            anyConstructed<DocumentSoftAssertions>().assertThatDocument("html")
+            anyConstructed<DocumentSoftAssertions>().assertAll()
+        }
+    }
+
+    @Test
+    fun `should return DocumentSoftAssertions assertThat`() {
+        val document: Document = mockk()
+        val assert: DocumentAssert = mockk(relaxed = true)
+        every { anyConstructed<DocumentSoftAssertions>().assertThat(any<Document>()) } returns assert
+        var documentAssert: DocumentAssert? = null
+
+        // when
+        Assertions.assertThat(document) {
+            documentAssert = this
+            elementExists(".class")
+            this
+        }
+
+        // then
+        assertThat(documentAssert).isEqualTo(assert)
+        verify {
+            anyConstructed<DocumentSoftAssertions>().assertThatDocument("html") wasNot called
+            anyConstructed<DocumentSoftAssertions>().assertAll()
+            assert.elementExists(".class")
+        }
+    }
+
+    @Test
+    fun `should return DocumentSoftAssertions assertThat softly`() {
+        val document: Document = mockk()
+        val assert: DocumentAssert = mockk()
+        every { anyConstructed<DocumentSoftAssertions>().assertThat(any<Document>()) } returns assert
+        var documentAssert: DocumentAssert? = null
+
+        // when
+        Assertions.assertThat(document, softly = true) {
             documentAssert = this
             this
         }
