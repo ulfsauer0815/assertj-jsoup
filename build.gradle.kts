@@ -2,14 +2,19 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.4.10"
-
     `java-library`
-    `maven-publish`
 
+    // publishing
+    `maven-publish`
+    id("com.jfrog.bintray") version "1.8.5"
+    id("pl.allegro.tech.build.axion-release") version "1.11.0"
+
+    // code analysis
     id("io.gitlab.arturbosch.detekt") version "1.14.2"
+
+    // code coverage
     jacoco
     id("com.github.nbaztec.coveralls-jacoco") version "1.2.4"
-
 }
 
 buildscript {
@@ -21,7 +26,6 @@ buildscript {
 }
 
 group = "com.github.ulfs"
-version = "0.0.1-SNAPSHOT"
 
 
 repositories {
@@ -65,6 +69,17 @@ publishing {
         }
     }
 }
+
+scmVersion {
+    localOnly = true
+    with(tag) {
+        prefix = "v"
+        versionSeparator = ""
+    }
+}
+
+// must be below scmVersion config!
+version = scmVersion.version
 
 detekt {
     toolVersion = "1.14.2"

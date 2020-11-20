@@ -1,0 +1,64 @@
+name: GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]*'
+
+jobs:
+
+  release:
+    name: Create Release
+    if: github.event.base_ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set version
+        run: echo "VERSION=$(echo "$GITHUB_REF" | sed 's|^v||')" >> $GITHUB_ENV
+
+      - name: Create GitHub release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ env.VERSION }}
+          draft: true
+          prerelease: true
+
+      - name: Attach jar to GitHub release
+        id: upload-release-jar
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/libs/assertj-jsoup-${VERSION}.jar
+          asset_name: assertj-jsoup-${VERSION}.jar
+          asset_content_type: application/java-archive
+
+      - name: Attach sources jar to GitHub release
+        id: upload-release-jar-sources
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/libs/assertj-jsoup-${VERSION}-sources.jar
+          asset_name: assertj-jsoup-${VERSION}-sources.jar
+          asset_content_type: application/java-archive
+
+      - name: Attach sources jar to GitHub release
+        id: upload-release-jar-sources
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./build/libs/assertj-jsoup-${VERSION}-sources.jar
+          asset_name: assertj-jsoup-${VERSION}-sources.jar
+          asset_content_type: application/java-archive
