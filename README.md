@@ -1,5 +1,6 @@
-# AssertJ assertions for HTML content
+# AssertJ assertions for HTML
 ![build](https://github.com/ulfsauer0815/assertj-jsoup/workflows/build/badge.svg)
+[![Bintray](https://api.bintray.com/packages/usauer/assertj-jsoup/assertj-jsoup/images/download.svg)](https://bintray.com/usauer/assertj-jsoup/assertj-jsoup/_latestVersion)
 [![JitPack](https://jitpack.io/v/ulfsauer0815/assertj-jsoup.svg)](https://jitpack.io/#ulfsauer0815/assertj-jsoup)
 [![coveralls](https://coveralls.io/repos/github/ulfsauer0815/assertj-jsoup/badge.svg)](https://coveralls.io/github/ulfsauer0815/assertj-jsoup)
 [![codecov](https://codecov.io/gh/ulfsauer0815/assertj-jsoup/branch/main/graph/badge.svg)](https://codecov.io/gh/ulfsauer0815/assertj-jsoup)
@@ -50,11 +51,10 @@ assertThat(document)
 *`build.gradle.kts`*
 ```kotlin
 repositories {
-    mavenCentral()
-    maven { url = uri("https://jitpack.io") }
+    jcenter()
 }
 
-testImplementation("com.github.ulfsauer0815:assertj-jsoup:1bdc9f3")
+testImplementation("com.github.ulfs:assertj-jsoup:0.1.0")
 ```
 
 ### Gradle
@@ -62,9 +62,8 @@ testImplementation("com.github.ulfsauer0815:assertj-jsoup:1bdc9f3")
 *`build.gradle`*
 ```groovy
 repositories {
-    mavenCentral()
-    maven { url "https://jitpack.io" }
+    jcenter()
 }
 
-testImplementation "com.github.ulfsauer0815:assertj-jsoup:1bdc9f3"
+testImplementation "com.github.ulfs:assertj-jsoup:0.1.0"
 ```

@@ -81,6 +81,30 @@ scmVersion {
 // must be below scmVersion config!
 version = scmVersion.version
 
+// must be below scmVersion config!
+bintray {
+    user = System.getenv("BINTRAY_USER")
+    key = System.getenv("BINTRAY_KEY")
+    publish = false
+
+    with(pkg) {
+        repo = project.name
+        name = project.name
+        setLicenses("MIT")
+        vcsUrl = "https://github.com/ulfsauer0815/assertj-jsoup.git"
+        issueTrackerUrl = "https://github.com/ulfsauer0815/assertj-jsoup/issues"
+
+        with(version) {
+            name = project.version as String
+            vcsTag = "v${project.version}"
+        }
+
+        githubRepo = "ulfsauer0815/assertj-jsoup"
+    }
+
+    setPublications(project.name)
+}
+
 detekt {
     toolVersion = "1.14.2"
     input = files(io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_SRC_DIR_KOTLIN)

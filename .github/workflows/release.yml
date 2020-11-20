@@ -17,7 +17,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set version
-
         run: echo "VERSION=$(echo "$GITHUB_REF" | sed 's|refs/tags/v||')" >> $GITHUB_ENV
 
       - name: Print version
@@ -63,3 +62,9 @@ jobs:
           asset_path: ./build/libs/assertj-jsoup-${{ env.VERSION }}-sources.jar
           asset_name: assertj-jsoup-${{ env.VERSION }}-sources.jar
           asset_content_type: application/java-archive
+
+      - name: Upload to Bintray
+        env:
+          BINTRAY_USER: ${{ secrets.BINTRAY_USER }}
+          BINTRAY_KEY: ${{ secrets.BINTRAY_KEY }}
+        run: ./gradlew bintrayUpload
