@@ -42,17 +42,6 @@ jobs:
           asset_content_type: application/java-archive
 
       - name: Attach sources jar to GitHub release
-        id: upload-release-jar
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/assertj-jsoup-${VERSION}-sources.jar
-          asset_name: assertj-jsoup-${VERSION}-sources.jar
-          asset_content_type: application/java-archive
-
-      - name: Attach sources jar to GitHub release
         id: upload-release-jar-sources
         uses: actions/upload-release-asset@v1
         env:
