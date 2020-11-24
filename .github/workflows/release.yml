@@ -28,7 +28,7 @@ jobs:
           java-version: '11'
 
       - name: Run build
-        run: ./gradlew build
+        run: ./gradlew build -PcheckApi
 
       - name: Create GitHub release
         id: create_release

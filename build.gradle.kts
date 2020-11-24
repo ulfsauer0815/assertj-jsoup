@@ -12,6 +12,9 @@ plugins {
     // code analysis
     id("io.gitlab.arturbosch.detekt") version "1.14.2"
 
+    // API compatibility
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.2.4"
+
     // code coverage
     jacoco
     id("com.github.nbaztec.coveralls-jacoco") version "1.2.4"
@@ -124,6 +127,10 @@ detekt {
         }
     }
     baseline = file("$projectDir/config/detekt/baseline.xml")
+}
+
+apiValidation {
+    validationDisabled = !hasProperty("checkApi")
 }
 
 tasks.withType<JacocoReport> {
