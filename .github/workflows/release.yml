@@ -44,7 +44,7 @@ jobs:
 
       - name: Attach jar to GitHub release
         id: upload-release-jar
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -55,7 +55,7 @@ jobs:
 
       - name: Attach sources jar to GitHub release
         id: upload-release-jar-sources
-        uses: actions/upload-release-asset@v1
+        uses: actions/upload-release-asset@v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
