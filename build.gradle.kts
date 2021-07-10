@@ -10,7 +10,7 @@ plugins {
     id("pl.allegro.tech.build.axion-release") version "1.11.0"
 
     // code analysis
-    id("io.gitlab.arturbosch.detekt") version "1.14.2"
+    id("io.gitlab.arturbosch.detekt") version "1.17.1"
 
     // API compatibility
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.6.0"
