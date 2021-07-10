@@ -1,3 +1,4 @@
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_SRC_DIR_KOTLIN
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -110,7 +111,8 @@ bintray {
 
 detekt {
     toolVersion = "1.14.2"
-    input = files(io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_SRC_DIR_KOTLIN)
+    input = files(DEFAULT_SRC_DIR_KOTLIN)
+    buildUponDefaultConfig = true
     config = files("$projectDir/config/detekt/detekt.yml")
     reports {
         xml {
