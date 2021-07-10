@@ -1,94 +1,94 @@
-public final class com/github/ulfs/assertj/jsoup/Assertions {
-	public static final field INSTANCE Lcom/github/ulfs/assertj/jsoup/Assertions;
+public final class io/github/ulfs/assertj/jsoup/Assertions {
+	public static final field INSTANCE Lio/github/ulfs/assertj/jsoup/Assertions;
 	public static final fun assertSoftly (Ljava/util/function/Consumer;)V
-	public static final fun assertThat (Lorg/jsoup/nodes/Document;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
+	public static final fun assertThat (Lorg/jsoup/nodes/Document;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public static final fun assertThat (Lorg/jsoup/nodes/Document;Lkotlin/jvm/functions/Function1;)V
 	public static final fun assertThat (Lorg/jsoup/nodes/Document;ZLkotlin/jvm/functions/Function1;)V
 	public static synthetic fun assertThat$default (Lorg/jsoup/nodes/Document;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-	public static final fun assertThatDocument (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
+	public static final fun assertThatDocument (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public static final fun assertThatDocument (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
 	public static final fun assertThatDocument (Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)V
 	public static synthetic fun assertThatDocument$default (Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final synthetic fun assertThatDocumentSpec (Ljava/lang/String;ZLkotlin/jvm/functions/Function1;)V
-	public static synthetic fun assertThatDocumentSpec$default (Lcom/github/ulfs/assertj/jsoup/Assertions;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static synthetic fun assertThatDocumentSpec$default (Lio/github/ulfs/assertj/jsoup/Assertions;Ljava/lang/String;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public final synthetic fun assertThatSpec (Lorg/jsoup/nodes/Document;ZLkotlin/jvm/functions/Function1;)V
-	public static synthetic fun assertThatSpec$default (Lcom/github/ulfs/assertj/jsoup/Assertions;Lorg/jsoup/nodes/Document;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static synthetic fun assertThatSpec$default (Lio/github/ulfs/assertj/jsoup/Assertions;Lorg/jsoup/nodes/Document;ZLkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 	public static final fun qa (Ljava/lang/String;)Ljava/lang/String;
 }
 
-public final class com/github/ulfs/assertj/jsoup/AttributeAssertionsSpec {
-	public fun <init> (Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;Ljava/lang/String;)V
-	public final fun containsText (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
-	public final fun copy (Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
-	public static synthetic fun copy$default (Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+public final class io/github/ulfs/assertj/jsoup/AttributeAssertionsSpec {
+	public fun <init> (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;Ljava/lang/String;)V
+	public final fun containsText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun copy (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public static synthetic fun copy$default (Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun exists ()Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
-	public final fun hasText (Ljava/lang/Object;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
-	public final fun hasText (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
-	public final fun hasText ([Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun exists ()Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun hasText (Ljava/lang/Object;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun hasText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun hasText ([Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
 	public fun hashCode ()I
-	public final fun matchesText (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
-	public final fun notExists ()Lcom/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun matchesText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
+	public final fun notExists ()Lio/github/ulfs/assertj/jsoup/AttributeAssertionsSpec;
 	public fun toString ()Ljava/lang/String;
 }
 
-public class com/github/ulfs/assertj/jsoup/DocumentAssert : org/assertj/core/api/AbstractAssert {
+public class io/github/ulfs/assertj/jsoup/DocumentAssert : org/assertj/core/api/AbstractAssert {
 	public fun <init> (Lorg/jsoup/nodes/Document;)V
-	public final fun elementAttributeContainsText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementAttributeExists (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementAttributeHasText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementAttributeHasText (Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementAttributeMatchesText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementAttributeNotExists (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementContainsText (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementExists (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementExists (Ljava/lang/String;I)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementHasClass (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementHasText (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementHasText (Ljava/lang/String;[Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementMatchesText (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementNotExists (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun elementNotHasClass (Ljava/lang/String;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementAttributeContainsText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementAttributeExists (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementAttributeHasText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementAttributeHasText (Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementAttributeMatchesText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementAttributeNotExists (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementContainsText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementExists (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementExists (Ljava/lang/String;I)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementHasClass (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementHasText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementHasText (Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementMatchesText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementNotExists (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementNotHasClass (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 }
 
-public final class com/github/ulfs/assertj/jsoup/DocumentAssertionsSpec {
-	public fun <init> (Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;)V
-	public final fun copy (Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;)Lcom/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
-	public static synthetic fun copy$default (Lcom/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;ILjava/lang/Object;)Lcom/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
+public final class io/github/ulfs/assertj/jsoup/DocumentAssertionsSpec {
+	public fun <init> (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;)V
+	public final fun copy (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;)Lio/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
+	public static synthetic fun copy$default (Lio/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;ILjava/lang/Object;)Lio/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
 	public fun equals (Ljava/lang/Object;)Z
 	public fun hashCode ()I
-	public final fun node (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
-	public final fun node (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
+	public final fun node (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
+	public final fun node (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lio/github/ulfs/assertj/jsoup/DocumentAssertionsSpec;
 	public fun toString ()Ljava/lang/String;
 }
 
-public final class com/github/ulfs/assertj/jsoup/DocumentSoftAssertions : org/assertj/core/api/SoftAssertions {
+public final class io/github/ulfs/assertj/jsoup/DocumentSoftAssertions : org/assertj/core/api/SoftAssertions {
 	public fun <init> ()V
 	public fun <init> (Z)V
 	public synthetic fun <init> (ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun assertThat (Lorg/jsoup/nodes/Document;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
-	public final fun assertThatDocument (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun assertThat (Lorg/jsoup/nodes/Document;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun assertThatDocument (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 }
 
-public final class com/github/ulfs/assertj/jsoup/NodeAssertionsSpec {
-	public fun <init> (Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;)V
-	public final fun attribute (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun attribute (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun containsText (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun copy (Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public static synthetic fun copy$default (Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;Lcom/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;ILjava/lang/Object;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+public final class io/github/ulfs/assertj/jsoup/NodeAssertionsSpec {
+	public fun <init> (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;)V
+	public final fun attribute (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun attribute (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun containsText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun copy (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public static synthetic fun copy$default (Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public fun equals (Ljava/lang/Object;)Z
-	public final fun exists ()Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun exists (I)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun hasAttribute (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun hasClass (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun hasText (Ljava/lang/Object;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun hasText (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun hasText ([Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun exists ()Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun exists (I)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasAttribute (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasClass (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasText (Ljava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasText ([Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public fun hashCode ()I
-	public final fun notExists ()Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun notHasAttribute (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
-	public final fun notHasClass (Ljava/lang/String;)Lcom/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun notExists ()Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun notHasAttribute (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun notHasClass (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public fun toString ()Ljava/lang/String;
 }
 
