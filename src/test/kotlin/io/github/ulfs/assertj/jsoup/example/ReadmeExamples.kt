@@ -57,7 +57,7 @@ class ReadmeExamples {
     }
 
 
-    fun loadExample(filename: String): String = this::class.java
-        .getResource("/example/$filename")
+    private fun loadExample(filename: String): String = this::class.java
+        .getResource("/example/$filename")!!
         .readText()
 }
