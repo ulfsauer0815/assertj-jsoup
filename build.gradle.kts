@@ -5,10 +5,11 @@ plugins {
     id("org.jetbrains.kotlin.jvm") version "1.5.20"
     `java-library`
 
-    // publishing
     `maven-publish`
+    signing
     id("com.jfrog.bintray") version "1.8.5"
-    id("pl.allegro.tech.build.axion-release") version "1.11.0"
+    id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
+    id("pl.allegro.tech.build.axion-release") version "1.13.3"
 
     // code analysis
     id("io.gitlab.arturbosch.detekt") version "1.17.1"
@@ -29,7 +30,7 @@ buildscript {
     }
 }
 
-group = "com.github.ulfs"
+group = "io.github.ulfs"
 
 
 repositories {
@@ -51,6 +52,7 @@ kotlin {
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 dependencies {
@@ -70,20 +72,58 @@ publishing {
     publications {
         create<MavenPublication>(rootProject.name) {
             from(components["java"])
+
+            pom {
+                name.set("$group:${rootProject.name}")
+                description.set("AssertJ assertions for HTML")
+                url.set("https://github.com/ulfsauer0815/assertj-jsoup")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("https://github.com/ulfsauer0815/assertj-jsoup/blob/main/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        name.set("Ulf Sauer")
+                        url.set("https://github.com/ulfsauer0815")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/ulfsauer0815/assertj-jsoup.git")
+                    developerConnection.set("scm:git:ssh://github.com:ulfsauer0815/assertj-jsoup.git")
+                    url.set("https://github.com/ulfsauer0815/assertj-jsoup")
+                }
+            }
         }
     }
+}
+
+signing {
+    sign(publishing.publications[rootProject.name])
 }
 
 scmVersion {
     localOnly = true
     with(tag) {
         prefix = "v"
-        versionSeparator = ""
     }
 }
 
 // must be below scmVersion config!
 version = scmVersion.version
+
+nexusPublishing {
+    repositories {
+        create("sonatype") {
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+
+            username.set(project.properties["sonatypeUsername"] as String?) // default
+            password.set(project.properties["sonatypePassword"] as String?) // default
+        }
+    }
+}
 
 // must be below scmVersion config!
 bintray {

@@ -20,3 +20,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# GPG
+release.asc*
+release.gpg*
+
+# env
+ci/env/sonatype.env
