@@ -7,7 +7,6 @@ plugins {
 
     `maven-publish`
     signing
-    id("com.jfrog.bintray") version "1.8.5"
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
     id("pl.allegro.tech.build.axion-release") version "1.13.3"
 
@@ -124,30 +123,6 @@ nexusPublishing {
             password.set(project.properties["sonatypePassword"] as String?) // default
         }
     }
-}
-
-// must be below scmVersion config!
-bintray {
-    user = System.getenv("BINTRAY_USER")
-    key = System.getenv("BINTRAY_KEY")
-    publish = false
-
-    with(pkg) {
-        repo = project.name
-        name = project.name
-        setLicenses("MIT")
-        vcsUrl = "https://github.com/ulfsauer0815/assertj-jsoup.git"
-        issueTrackerUrl = "https://github.com/ulfsauer0815/assertj-jsoup/issues"
-
-        with(version) {
-            name = project.version as String
-            vcsTag = "v${project.version}"
-        }
-
-        githubRepo = "ulfsauer0815/assertj-jsoup"
-    }
-
-    setPublications(project.name)
 }
 
 detekt {
