@@ -1,5 +1,6 @@
 # AssertJ assertions for HTML
 ![build](https://github.com/ulfsauer0815/assertj-jsoup/workflows/build/badge.svg)
+[![Maven](https://img.shields.io/maven-central/v/io.github.ulfs/assertj-jsoup?color=blue)](https://mvnrepository.com/artifact/io.github.ulfs/assertj-jsoup)
 [![JitPack](https://jitpack.io/v/ulfsauer0815/assertj-jsoup.svg)](https://jitpack.io/#ulfsauer0815/assertj-jsoup)
 [![coveralls](https://coveralls.io/repos/github/ulfsauer0815/assertj-jsoup/badge.svg)](https://coveralls.io/github/ulfsauer0815/assertj-jsoup)
 [![codecov](https://codecov.io/gh/ulfsauer0815/assertj-jsoup/branch/main/graph/badge.svg)](https://codecov.io/gh/ulfsauer0815/assertj-jsoup)
@@ -53,7 +54,7 @@ repositories {
     jcenter()
 }
 
-testImplementation("com.github.ulfs:assertj-jsoup:0.1.0")
+testImplementation("io.github.ulfs:assertj-jsoup:0.1.1")
 ```
 
 ### Gradle
@@ -64,7 +65,7 @@ repositories {
     jcenter()
 }
 
-testImplementation "com.github.ulfs:assertj-jsoup:0.1.0"
+testImplementation "io.github.ulfs:assertj-jsoup:0.1.1"
 ```
 
 
