@@ -100,6 +100,7 @@ publishing {
 }
 
 signing {
+    isRequired = project.hasProperty("requiredSigning")
     sign(publishing.publications[rootProject.name])
 }
 

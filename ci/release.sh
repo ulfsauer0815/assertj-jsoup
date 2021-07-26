@@ -15,6 +15,7 @@ fi
 pushd ".." > /dev/null
 
 ./gradlew publishToSonatype \
+  "-PrequiredSigning" \
   "-Dorg.gradle.project.sonatypeUsername=$SONATYPE_USERNAME" \
   "-Dorg.gradle.project.sonatypePassword=$SONATYPE_PASSWORD" \
   "-Dorg.gradle.project.signing.keyId=$SIGNING_KEY_ID" \
