@@ -1,6 +1,6 @@
 # Development
 
-## Release locally
+## Release
 
 ### Tag the new version
 ```sh
@@ -10,9 +10,20 @@
 
 ### Publish
 
+You can choose to
+(A) let GitHub Actions publish the release for you or
+(B) publish it from your local machine
+
+#### (A) GitHub Actions
+```sh
+git push --tags
+```
+
+#### Option (B): Locally
+
 Make sure the signing ey is present as `release.gpg` or get it via `ci/load-gpg-key.sh`.  
 
-Make sure to fill out `ci/env/sonatype.env`, then run
+Fill out `ci/env/sonatype.env` (see [example](ci/env/sonatype.env.example)), then run
 
 ```sh
 ./ci/release.sh
