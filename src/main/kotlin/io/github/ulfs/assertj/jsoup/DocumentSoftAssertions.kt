@@ -12,5 +12,5 @@ public class DocumentSoftAssertions(
         if (softly) proxy(DocumentAssert::class.java, Document::class.java, actual)
         else DocumentAssert(actual)
 
-    public fun assertThatDocument(actual: String?): DocumentAssert = assertThat(Jsoup.parse(actual))
+    public fun assertThatDocument(actual: String?): DocumentAssert = assertThat(actual?.let { Jsoup.parse(it) })
 }
