@@ -12,11 +12,13 @@ public object Assertions {
     public fun assertThat(actual: Document?): DocumentAssert = DocumentAssert(actual)
 
     @JvmStatic
-    public fun assertThatDocument(actual: String?): DocumentAssert =
-        DocumentAssert(
-            Jsoup.parse(actual
-                .also { assertThat(actual).withFailMessage("%nExpecting document but found null").isNotNull })
-        )
+    public fun assertThatDocument(actual: String?): DocumentAssert {
+        assertThat(actual)
+            .withFailMessage("%nExpecting document but found null")
+            .isNotNull
+
+        return DocumentAssert(actual?.let { Jsoup.parse(it) })
+    }
 
     @JvmStatic
     public fun assertSoftly(assertions: Consumer<DocumentSoftAssertions>) {
@@ -56,10 +58,13 @@ public object Assertions {
         assert: DocumentAssertionsSpec.() -> DocumentAssertionsSpec
     ) {
         assertThat(actual)
-            .withFailMessage("%nExpecting document but found%n  null")
+            .withFailMessage("%nExpecting document but found null")
             .isNotNull
-        val document = Jsoup.parse(actual)
-        assertThatSpec(document, softly, assert)
+
+        actual?.let {
+            val document = Jsoup.parse(it)
+            assertThatSpec(document, softly, assert)
+        }
     }
 
     @JvmSynthetic

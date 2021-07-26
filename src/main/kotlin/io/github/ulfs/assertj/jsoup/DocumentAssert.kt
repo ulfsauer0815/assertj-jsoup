@@ -14,7 +14,7 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
-        if (selection == null) {
+        if (selection === null) {
             failWithElementNotFound(cssSelector)
         }
     }
@@ -45,7 +45,7 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
-        if (selection != null) {
+        if (selection !== null) {
             failWithActualExpectedAndMessage(
                 selection,
                 null,
@@ -99,7 +99,7 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
-        if (selection == null) {
+        if (selection === null) {
             failWithElementNotFound(cssSelector)
             return this
         }
@@ -181,7 +181,7 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
-        if (selection == null) {
+        if (selection === null) {
             failWithElementNotFound(cssSelector)
             return this
         }
@@ -208,7 +208,7 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
-        if (selection == null) {
+        if (selection === null) {
             failWithElementNotFound(cssSelector)
             return this
         }
@@ -390,7 +390,7 @@ public open class DocumentAssert(
         isNotNull
 
         val selection = actual.selectFirst(cssSelector)
-        if (selection == null) {
+        if (selection === null) {
             failWithElementNotFound(cssSelector)
             return this
         }
@@ -420,7 +420,7 @@ public open class DocumentAssert(
 
         val selection = actual.selectFirst(cssSelector)
 
-        if (selection == null) {
+        if (selection === null) {
             failWithElementNotFound(cssSelector)
             return this
         }
