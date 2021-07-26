@@ -65,6 +65,19 @@ class DocumentSoftAssertionsTest {
         verify { Jsoup.parse("html") }
     }
 
+    @Test
+    fun `should call assertThat on null argument`() {
+        // given
+        val assertions = spyk<DocumentSoftAssertions>()
+
+        // when / then
+        assertions.assertThatDocument(null)
+
+        // then
+        verify { assertions.assertThat(null as Document?) }
+        verify(exactly = 0) { Jsoup.parse(any()) }
+    }
+
 
     companion object {
         @JvmStatic
