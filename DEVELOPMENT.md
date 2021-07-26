@@ -18,6 +18,8 @@ You can choose to
 **(A)** let GitHub Actions publish the release for you or
 **(B)** publish it from your local machine.
 
+*Note*: **(A)** will also publish a GitHub release draft  
+
 #### (A) GitHub Actions
 ```sh
 git push --tags
@@ -32,6 +34,17 @@ Fill out `ci/env/sonatype.env` (see [example](ci/env/sonatype.env.example)), the
 ```sh
 ./ci/release.sh
 ```
+
+### Approve
+
+#### Maven Central
+Manually approve the release to move it from staging to public:\
+https://s01.oss.sonatype.org/#stagingRepositories
+
+#### GitHub
+Manually approve the GitHub release draft:\
+https://github.com/ulfsauer0815/assertj-jsoup/releases
+
 
 ## GPG Signing
 
