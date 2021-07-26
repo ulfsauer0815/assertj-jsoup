@@ -17,7 +17,7 @@ public object Assertions {
             .withFailMessage("%nExpecting document but found null")
             .isNotNull
 
-        return DocumentAssert(actual?.let { Jsoup.parse(it) })
+        return DocumentAssert(Jsoup.parse(actual!!))
     }
 
     @JvmStatic
