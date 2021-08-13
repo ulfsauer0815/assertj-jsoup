@@ -51,7 +51,7 @@ assertThat(document)
 *`build.gradle.kts`*
 ```kotlin
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 testImplementation("io.github.ulfs:assertj-jsoup:0.1.1")
@@ -62,7 +62,7 @@ testImplementation("io.github.ulfs:assertj-jsoup:0.1.1")
 *`build.gradle`*
 ```groovy
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 testImplementation "io.github.ulfs:assertj-jsoup:0.1.1"
