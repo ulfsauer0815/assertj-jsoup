@@ -134,7 +134,7 @@ class DocumentAssertElementAttributeContainsTextTest {
     @Test
     fun `should fail if attribute is missing on element`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class""></div>""")
+        val document: Document = Jsoup.parse("""<div class="class"></div>""")
 
         // when / then
         assertThatThrownBy {
@@ -152,7 +152,7 @@ class DocumentAssertElementAttributeContainsTextTest {
                 on elements for
                   <.class>
                 but found
-                  <div class="class" "></div>
+                  <div class="class"></div>
                 """.trimIndent()
             )
     }
