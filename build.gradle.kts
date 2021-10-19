@@ -59,7 +59,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     implementation("org.assertj:assertj-core:3.21.0")
-    implementation("org.jsoup:jsoup:1.14.2")
+    implementation("org.jsoup:jsoup:1.14.3")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
