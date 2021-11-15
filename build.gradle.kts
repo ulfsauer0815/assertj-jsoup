@@ -2,7 +2,7 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.31"
+    kotlin("jvm") version "1.6.0"
     `java-library`
 
     `maven-publish`
