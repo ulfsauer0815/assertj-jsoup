@@ -41,6 +41,8 @@ Fill out `ci/env/sonatype.env` (see [example](ci/env/sonatype.env.example)), the
 Manually approve the release to move it from staging to public:\
 https://s01.oss.sonatype.org/#stagingRepositories
 
+Staging Repositories: Close -> Release
+
 #### GitHub
 Manually approve the GitHub release draft:\
 https://github.com/ulfsauer0815/assertj-jsoup/releases
