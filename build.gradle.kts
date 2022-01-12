@@ -21,21 +21,13 @@ plugins {
     id("com.github.nbaztec.coveralls-jacoco") version "1.2.13"
 }
 
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        jcenter()
-    }
-}
-
 group = "io.github.ulfs"
 
 
 repositories {
-    jcenter()
     mavenCentral()
-    google()
+    // required for io.gitlab.arturbosch.detekt:detekt-report-html
+    maven { url = uri("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven") }
 }
 
 tasks.withType<KotlinCompile> {
