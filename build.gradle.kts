@@ -154,6 +154,13 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
     }
 }
 
+tasks {
+    named("check") {
+        // might be obsolete once detekt 2.x is released
+        dependsOn("detektMain")
+    }
+}
+
 apiValidation {
     validationDisabled = !hasProperty("checkApi")
 }
