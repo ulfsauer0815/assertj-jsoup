@@ -130,25 +130,28 @@ nexusPublishing {
 }
 
 detekt {
-    toolVersion = "1.14.2"
-    input = files(DEFAULT_SRC_DIR_KOTLIN)
+    toolVersion = "1.19.0"
+    source = files(DEFAULT_SRC_DIR_KOTLIN)
     buildUponDefaultConfig = true
     config = files("$projectDir/config/detekt/detekt.yml")
+    baseline = file("$projectDir/config/detekt/baseline.xml")
+}
+
+tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
     reports {
         xml {
-            enabled = true
-            destination = file("$projectDir/build/test-results/detekt/detekt.xml")
+            required.set(true)
+            outputLocation.set(file("$projectDir/build/test-results/detekt/detekt.xml"))
         }
         html {
-            enabled = true
-            destination = file("$projectDir/build/reports/detekt/detekt.html")
+            required.set(true)
+            outputLocation.set(file("$projectDir/build/reports/detekt/detekt.html"))
         }
         txt {
-            enabled = true
-            destination = file("$projectDir/build/reports/detekt/detekt.txt")
+            required.set(true)
+            outputLocation.set(file("$projectDir/build/reports/detekt/detekt.txt"))
         }
     }
-    baseline = file("$projectDir/config/detekt/baseline.xml")
 }
 
 apiValidation {
