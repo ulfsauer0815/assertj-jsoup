@@ -4,12 +4,14 @@ import io.github.ulfs.assertj.jsoup.test.ReflectionUtils.Companion.callGetter
 import io.mockk.called
 import io.mockk.clearStaticMockk
 import io.mockk.every
+import io.mockk.justRun
 import io.mockk.mockk
 import io.mockk.mockkConstructor
 import io.mockk.mockkStatic
 import io.mockk.unmockkConstructor
 import io.mockk.unmockkStatic
 import io.mockk.verify
+import io.mockk.verifyAll
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.SoftAssertionsProvider
@@ -159,7 +161,7 @@ class AssertionsTest {
         // then
         assertThat(documentAssert).isEqualTo(assert)
         verify {
-            anyConstructed<DocumentSoftAssertions>().assertThatDocument("html")
+            anyConstructed<DocumentSoftAssertions>().assertThat(document)
             anyConstructed<DocumentSoftAssertions>().assertAll()
         }
     }
@@ -188,7 +190,7 @@ class AssertionsTest {
 
     @Test
     fun `should return DocumentSoftAssertions assertThatDocumentSpec softly`() {
-        every { SoftAssertionsProvider.assertSoftly(any<Class<DocumentSoftAssertions>>(), any()) } returns mockk()
+        justRun { anyConstructed<DocumentSoftAssertions>().assertAll() }
 
         var documentAssert: DocumentAssertionsSpec? = null
 
@@ -199,7 +201,7 @@ class AssertionsTest {
         }
 
         // then
-        verify {
+        verifyAll {
             anyConstructed<DocumentSoftAssertions>().assertAll()
         }
 
