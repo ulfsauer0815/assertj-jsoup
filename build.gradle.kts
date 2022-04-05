@@ -159,6 +159,9 @@ tasks {
         // might be obsolete once detekt 2.x is released
         dependsOn("detektMain")
     }
+    named("coverallsJacoco") {
+        dependsOn("jacocoTestReport")
+    }
 }
 
 apiValidation {
