@@ -75,7 +75,7 @@ class DocumentSoftAssertionsTest {
 
         // then
         verify { assertions.assertThat(null as Document?) }
-        verify(exactly = 0) { Jsoup.parse(any()) }
+        verify(exactly = 0) { Jsoup.parse(any<String>()) }
     }
 
 
