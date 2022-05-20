@@ -52,7 +52,7 @@ class AssertionsTest {
         // given
         val document: Document = mockk()
         val element: Element = mockk()
-        every { Jsoup.parse(any()) } returns document
+        every { Jsoup.parse(any<String>()) } returns document
         every { document.selectFirst(any<String>()) } returns element
 
         // when
