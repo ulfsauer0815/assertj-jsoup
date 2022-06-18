@@ -2,7 +2,13 @@ import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_
 import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+    extra["detektVersion"] = "1.20.0"
+}
+
 plugins {
+    val detektVersion: String by project
+
     kotlin("jvm") version "1.6.21"
     `java-library`
 
@@ -12,7 +18,7 @@ plugins {
     id("pl.allegro.tech.build.axion-release") version "1.13.14"
 
     // code analysis
-    id("io.gitlab.arturbosch.detekt") version "1.20.0"
+    id("io.gitlab.arturbosch.detekt") version detektVersion
 
     // API compatibility
     id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.10.1"
@@ -69,6 +75,9 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("io.mockk:mockk:1.12.4")
+
+    val detektVersion: String by project
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
 }
 
 publishing {
@@ -130,7 +139,7 @@ nexusPublishing {
 }
 
 detekt {
-    toolVersion = "1.19.0"
+    toolVersion = "1.20.0"
     source = files(DEFAULT_SRC_DIR_KOTLIN)
     buildUponDefaultConfig = true
     config = files("$projectDir/config/detekt/detekt.yml")
