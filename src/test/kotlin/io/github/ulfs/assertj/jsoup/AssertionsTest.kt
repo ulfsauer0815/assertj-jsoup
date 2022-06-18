@@ -1,6 +1,6 @@
 package io.github.ulfs.assertj.jsoup
 
-import io.github.ulfs.assertj.jsoup.test.ReflectionUtils.Companion.callGetter
+import io.github.ulfs.assertj.jsoup.test.ReflectionUtils.callGetter
 import io.mockk.called
 import io.mockk.clearStaticMockk
 import io.mockk.every
