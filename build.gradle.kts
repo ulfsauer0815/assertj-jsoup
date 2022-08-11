@@ -117,9 +117,9 @@ signing {
 }
 
 scmVersion {
-    localOnly = true
+    localOnly.set(true)
     with(tag) {
-        prefix = "v"
+        prefix.set("v")
     }
 }
 
