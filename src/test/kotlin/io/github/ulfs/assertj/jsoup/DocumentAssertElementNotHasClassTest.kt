@@ -4,6 +4,7 @@ import io.github.ulfs.assertj.jsoup.Assertions.assertThat
 import io.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
 import io.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.assertj.core.error.AssertJMultipleFailuresError
 import org.assertj.core.util.FailureMessages.actualIsNull
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -35,7 +36,7 @@ class DocumentAssertElementNotHasClassTest {
                 elementNotHasClass(".class", "content")
             }
         }
-            .isInstanceOf(AssertionError::class.java)
+            .isInstanceOf(AssertJMultipleFailuresError::class.java)
             .hasOneError()
             .hasErrorWithMessage(
                 """
