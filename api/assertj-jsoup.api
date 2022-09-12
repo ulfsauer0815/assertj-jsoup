@@ -40,12 +40,16 @@ public class io/github/ulfs/assertj/jsoup/DocumentAssert : org/assertj/core/api/
 	public final fun elementAttributeHasText (Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementAttributeMatchesText (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementAttributeNotExists (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementContainsHtml (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementContainsText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementExists (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementExists (Ljava/lang/String;I)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasClass (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementHasHtml (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementHasHtml (Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasText (Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementMatchesHtml (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementMatchesText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementNotExists (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementNotHasClass (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
