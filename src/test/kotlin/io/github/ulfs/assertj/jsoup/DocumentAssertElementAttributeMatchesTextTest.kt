@@ -5,7 +5,6 @@ import io.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
 import io.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
-import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.test.Test
 
@@ -27,7 +26,7 @@ class DocumentAssertElementAttributeMatchesTextTest {
     @Test
     fun `should fail if element does not exist`() {
         // given
-        val document: Document = Jsoup.parse("")
+        val document: Document = JsoupUtils.parse("")
 
         // when / then
         assertThatThrownBy {
@@ -50,7 +49,7 @@ class DocumentAssertElementAttributeMatchesTextTest {
     @Test
     fun `should pass if element matches`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class" attr="value"></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class" attr="value"></div>""")
 
         // when
         assertThat(document, true) {
@@ -64,7 +63,7 @@ class DocumentAssertElementAttributeMatchesTextTest {
     @Test
     fun `should fail if element has attribute in inner node`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"><span attr="value"></span></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"><span attr="value"></span></div>""")
 
         // when / then
         assertThatThrownBy {
@@ -92,7 +91,7 @@ class DocumentAssertElementAttributeMatchesTextTest {
     @Test
     fun `should fail if attribute does not match`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class" attr="different"></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class" attr="different"></div>""")
 
         // when / then
         assertThatThrownBy {
@@ -120,7 +119,7 @@ class DocumentAssertElementAttributeMatchesTextTest {
     @Test
     fun `should fail if attribute is missing on element`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"></div>""")
 
         // when / then
         assertThatThrownBy {

@@ -5,7 +5,6 @@ import io.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
 import io.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
-import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.test.Test
 
@@ -27,7 +26,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should fail if element does not exist`() {
         // given
-        val document: Document = Jsoup.parse("")
+        val document: Document = JsoupUtils.parse("")
 
         // when / then
         assertThatThrownBy {
@@ -50,7 +49,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element contains html`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class">html<br>text</div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class">html<br>text</div>""")
 
         // when
         assertThat(document, true) {
@@ -64,7 +63,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element contains html in different form`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class">html<br/>text</div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class">html<br/>text</div>""")
 
         // when
         assertThat(document, true) {
@@ -78,7 +77,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element contains nested html`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"><p><span>text</span><span>html</span></p></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"><p><span>text</span><span>html</span></p></div>""")
 
         // when
         assertThat(document, true) {
@@ -92,7 +91,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element contains complex html`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"><span><b>h</b>t<strong>m</strong>l</span></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"><span><b>h</b>t<strong>m</strong>l</span></div>""")
 
         // when
         assertThat(document, true) {
@@ -106,7 +105,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element text is the entire html`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class">html<br>text</div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class">html<br>text</div>""")
 
         // when / then
         assertThat(document, true) {
@@ -120,7 +119,7 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should fail if element does not contain the html`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class">different<img>html</div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class">different<img>html</div>""")
 
         // when / then
         assertThatThrownBy {
