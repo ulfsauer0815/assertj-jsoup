@@ -20,6 +20,22 @@ public data class NodeAssertionsSpec(
         softAssertions.assertThat(document).elementNotExists(cssSelector)
     }
 
+    public fun containsHtml(substring: String): NodeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementContainsHtml(cssSelector, substring)
+    }
+
+    public fun hasHtml(text: String): NodeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementHasHtml(cssSelector, text)
+    }
+
+    public fun hasHtml(vararg texts: String): NodeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementHasHtml(cssSelector, *texts)
+    }
+
+    public fun hasHtml(obj: Any?): NodeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementHasHtml(cssSelector, obj?.toString() ?: "")
+    }
+
     public fun containsText(substring: String): NodeAssertionsSpec = apply {
         softAssertions.assertThat(document).elementContainsText(cssSelector, substring)
     }
