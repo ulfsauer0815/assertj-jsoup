@@ -78,6 +78,7 @@ public final class io/github/ulfs/assertj/jsoup/NodeAssertionsSpec {
 	public fun <init> (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;)V
 	public final fun attribute (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun attribute (Ljava/lang/String;Lkotlin/jvm/functions/Function1;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun containsHtml (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun containsText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun copy (Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public static synthetic fun copy$default (Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;Lio/github/ulfs/assertj/jsoup/DocumentSoftAssertions;Lorg/jsoup/nodes/Document;Ljava/lang/String;ILjava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
@@ -86,6 +87,9 @@ public final class io/github/ulfs/assertj/jsoup/NodeAssertionsSpec {
 	public final fun exists (I)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasAttribute (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasClass (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasHtml (Ljava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasHtml (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasHtml ([Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasText (Ljava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasText ([Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
