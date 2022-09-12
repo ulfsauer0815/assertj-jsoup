@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
+@Suppress("detekt:LargeClass", "detekt:TooManyFunctions")
 public open class DocumentAssert(
     actual: Document?
 ) : AbstractAssert<DocumentAssert, Document>(actual, DocumentAssert::class.java) {
@@ -91,6 +92,142 @@ public open class DocumentAssert(
                 attribute,
                 cssSelector,
                 selection
+            )
+        }
+    }
+
+    public fun elementHasHtml(cssSelector: String, string: String): DocumentAssert = apply {
+        isNotNull
+
+        val selection = actual.selectFirst(cssSelector)
+        if (selection === null) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        val html = selection.html()
+        if (html != string) {
+            failWithActualExpectedAndMessage(
+                html,
+                string,
+                "%nExpecting element for%n" +
+                        "  <%s>%n" +
+                        "to have html%n" +
+                        "  <%s>%n" +
+                        "but was%n" +
+                        "  <%s>",
+                cssSelector,
+                string,
+                html
+            )
+        }
+    }
+
+    public fun elementHasHtml(cssSelector: String, vararg strings: String): DocumentAssert = apply {
+        isNotNull
+
+        if (strings.isEmpty()) {
+            throw IllegalArgumentException("elementHasHtml expects at least two arguments")
+        }
+
+        val selection = actual.select(cssSelector)
+        if (selection.isEmpty()) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        strings.zip(selection).onEachIndexed { index, matchPair ->
+            val elementHtml = matchPair.second.html()
+            val expectedHtml = matchPair.first
+            if (elementHtml != expectedHtml) {
+                failWithActualExpectedAndMessage(
+                    elementHtml,
+                    expectedHtml,
+                    "%nExpecting element at position" +
+                            " %s " +
+                            "in list for%n" +
+                            "  <%s>%n" +
+                            "to have html%n" +
+                            "  <%s>%n" +
+                            "but was%n" +
+                            "  <%s>",
+                    index,
+                    cssSelector,
+                    expectedHtml,
+                    elementHtml
+                )
+                return this
+            }
+        }
+
+        if (selection.size < strings.size) {
+            val rest = strings.drop(selection.size)
+            failWithMessage(
+                "%nExpecting" +
+                        " %s more element(s) for%n" +
+                        "  %s%n" +
+                        "to be html%n" +
+                        "%s%n" +
+                        "in list%n" +
+                        "%s",
+                rest.size,
+                cssSelector,
+                maskSelection(rest),
+                maskSelection(selection)
+            )
+        }
+    }
+
+    public fun elementContainsHtml(cssSelector: String, substring: String): DocumentAssert = apply {
+        isNotNull
+
+        val selection = actual.selectFirst(cssSelector)
+        if (selection === null) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        val html = selection.html()
+        if (!html.contains(substring)) {
+            failWithActualExpectedAndMessage(
+                html,
+                substring,
+                "%nExpecting element for%n" +
+                        "  <%s>%n" +
+                        "to contain html%n" +
+                        "  <%s>%n" +
+                        "but was%n" +
+                        "  <%s>",
+                cssSelector,
+                substring,
+                html
+            )
+        }
+    }
+
+    public fun elementMatchesHtml(cssSelector: String, regex: String): DocumentAssert = apply {
+        isNotNull
+
+        val selection = actual.selectFirst(cssSelector)
+        if (selection === null) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        val html = selection.html()
+        if (!html.contains(regex.toRegex())) {
+            failWithActualExpectedAndMessage(
+                html,
+                regex,
+                "%nExpecting element for%n" +
+                        "  <%s>%n" +
+                        "to match regex for html%n" +
+                        "  <%s>%n" +
+                        "but was%n" +
+                        "  <%s>",
+                cssSelector,
+                regex,
+                html
             )
         }
     }
