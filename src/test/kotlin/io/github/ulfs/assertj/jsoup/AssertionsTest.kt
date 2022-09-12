@@ -52,8 +52,13 @@ class AssertionsTest {
         // given
         val document: Document = mockk()
         val element: Element = mockk()
+        val outputSettings: Document.OutputSettings = mockk {
+            every { prettyPrint(any()) } returns this
+        }
         every { Jsoup.parse(any<String>()) } returns document
+        every { document.outputSettings() } returns outputSettings
         every { document.selectFirst(any<String>()) } returns element
+
 
         // when
         val documentAssert = Assertions.assertThatDocument("html")
@@ -219,7 +224,7 @@ class AssertionsTest {
         var documentAssert: DocumentAssertionsSpec? = null
 
         // when
-        Assertions.assertThatSpec(Jsoup.parse("html")) {
+        Assertions.assertThatSpec(JsoupUtils.parse("html")) {
             documentAssert = this
             this
         }

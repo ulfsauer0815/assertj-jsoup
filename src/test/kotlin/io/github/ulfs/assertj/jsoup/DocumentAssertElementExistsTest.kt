@@ -5,7 +5,6 @@ import io.github.ulfs.assertj.jsoup.test.hasErrorWithMessage
 import io.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.util.FailureMessages.actualIsNull
-import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.test.Test
 
@@ -27,7 +26,7 @@ class DocumentAssertElementExistsTest {
     @Test
     fun `should fail if element does not exist`() {
         // given
-        val document: Document = Jsoup.parse("")
+        val document: Document = JsoupUtils.parse("")
 
         // when / then
         assertThatThrownBy {
@@ -50,7 +49,7 @@ class DocumentAssertElementExistsTest {
     @Test
     fun `should pass if element exists`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"/>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"/>""")
 
         // when
         assertThat(document, true) {
@@ -64,7 +63,7 @@ class DocumentAssertElementExistsTest {
     @Test
     fun `should pass if element exists more than once`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"/><div class="class"/>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"/><div class="class"/>""")
 
         // when
         assertThat(document, true) {
@@ -78,7 +77,7 @@ class DocumentAssertElementExistsTest {
     @Test
     fun `should fail if element exists less than twice`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"/>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"/>""")
 
         // when / then
         assertThatThrownBy {
@@ -106,7 +105,7 @@ class DocumentAssertElementExistsTest {
     @Test
     fun `should fail if element exists more than twice`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"/><div class="class"/><div class="class"/>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"/><div class="class"/><div class="class"/>""")
 
         // when / then
         assertThatThrownBy {
@@ -136,7 +135,7 @@ class DocumentAssertElementExistsTest {
     @Test
     fun `should pass if element exists exactly twice`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"/><div class="class"/>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"/><div class="class"/>""")
 
         // when
         assertThat(document, true) {

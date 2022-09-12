@@ -6,7 +6,6 @@ import io.github.ulfs.assertj.jsoup.test.hasOneError
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.error.AssertJMultipleFailuresError
 import org.assertj.core.util.FailureMessages.actualIsNull
-import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import kotlin.test.Test
 
@@ -28,7 +27,7 @@ class DocumentAssertElementNotHasClassTest {
     @Test
     fun `should fail if element does not exist`() {
         // given
-        val document: Document = Jsoup.parse("")
+        val document: Document = JsoupUtils.parse("")
 
         // when / then
         assertThatThrownBy {
@@ -51,7 +50,7 @@ class DocumentAssertElementNotHasClassTest {
     @Test
     fun `should pass if element does not have class attribute`() {
         // given
-        val document: Document = Jsoup.parse("""<div id="id">""")
+        val document: Document = JsoupUtils.parse("""<div id="id">""")
 
         // when / then
         assertThat(document, true) {
@@ -65,7 +64,7 @@ class DocumentAssertElementNotHasClassTest {
     @Test
     fun `should fail if element has class`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class content">text</div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class content">text</div>""")
 
         // when
         assertThatThrownBy {
@@ -96,7 +95,7 @@ class DocumentAssertElementNotHasClassTest {
     @Test
     fun `should pass if only inner element has class`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class"><span class="content">text</span></div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class"><span class="content">text</span></div>""")
 
         // when
         assertThat(document, true) {
@@ -110,7 +109,7 @@ class DocumentAssertElementNotHasClassTest {
     @Test
     fun `should pass if element does not have class`() {
         // given
-        val document: Document = Jsoup.parse("""<div class="class cont">text</div>""")
+        val document: Document = JsoupUtils.parse("""<div class="class cont">text</div>""")
 
         // when / then
         assertThat(document, true) {

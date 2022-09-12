@@ -27,7 +27,7 @@ class DocumentSoftAssertionsTest {
         val assertions = DocumentSoftAssertions(true)
 
         // when
-        assertions.assertThat(Jsoup.parse(""))
+        assertions.assertThat(JsoupUtils.parse(""))
             .elementExists(".class")
         // then
         // no exception is thrown
@@ -46,7 +46,7 @@ class DocumentSoftAssertionsTest {
 
         // when / then
         assertThatThrownBy {
-            assertions.assertThat(Jsoup.parse(""))
+            assertions.assertThat(JsoupUtils.parse(""))
                 .elementExists(".class")
         }
             .isInstanceOf(AssertionError::class.java)

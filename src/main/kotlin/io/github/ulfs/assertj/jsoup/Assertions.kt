@@ -2,7 +2,6 @@ package io.github.ulfs.assertj.jsoup
 
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertionsProvider
-import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.util.function.Consumer
 
@@ -17,7 +16,7 @@ public object Assertions {
             .withFailMessage("%nExpecting document but found null")
             .isNotNull
 
-        return DocumentAssert(Jsoup.parse(actual!!))
+        return DocumentAssert(JsoupUtils.parse(actual!!))
     }
 
     @JvmStatic
@@ -62,7 +61,7 @@ public object Assertions {
             .isNotNull
 
         actual?.let {
-            val document = Jsoup.parse(it)
+            val document = JsoupUtils.parse(it)
             assertThatSpec(document, softly, assert)
         }
     }
