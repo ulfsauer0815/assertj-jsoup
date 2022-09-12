@@ -62,6 +62,90 @@ class NodeAssertionsSpecTest {
     }
 
     @Test
+    fun `should call elementContainsHtml`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementContainsHtml(any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.containsHtml("html")
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementContainsHtml("selector", "html") }
+    }
+
+    @Test
+    fun `should call elementHasHtml`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementHasHtml(any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasHtml("html")
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementHasHtml("selector", "html") }
+    }
+
+    @Test
+    fun `should call elementHasHtml with multiple arguments`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementHasHtml(any(), any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasHtml("html1", "html2")
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementHasHtml("selector", "html1", "html2") }
+    }
+
+    @Test
+    fun `should call elementHasHtml with object argument`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementHasHtml(any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasHtml(42)
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementHasHtml("selector", "42") }
+    }
+
+    @Test
+    fun `should call elementHasHtml with null argument`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementHasHtml(any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasHtml(null)
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementHasHtml("selector", "") }
+    }
+
+    @Test
+    fun `should call elementHasHtml with argument returning null for toString`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementHasHtml(any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasHtml(ClassWithNullToString())
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementHasHtml("selector", "") }
+    }
+
+    @Test
     fun `should call elementContainsText`() {
         // given
         every { softAssertions.assertThat(any<Document>()).elementContainsText(any(), any()) } returns dummySoftAssertions()
