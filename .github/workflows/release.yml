@@ -40,7 +40,7 @@ jobs:
           tag_name: ${{ github.ref }}
           release_name: ${{ env.VERSION }}
           draft: true
-          prerelease: true
+          prerelease: false
 
       - name: Attach jar to GitHub release
         id: upload-release-jar
