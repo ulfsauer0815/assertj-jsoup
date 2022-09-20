@@ -54,7 +54,7 @@ repositories {
     mavenCentral()
 }
 
-testImplementation("io.github.ulfs:assertj-jsoup:0.1.3")
+testImplementation("io.github.ulfs:assertj-jsoup:0.1.4")
 ```
 
 ### Gradle
@@ -65,7 +65,7 @@ repositories {
     mavenCentral()
 }
 
-testImplementation "io.github.ulfs:assertj-jsoup:0.1.3"
+testImplementation "io.github.ulfs:assertj-jsoup:0.1.4"
 ```
 
 
