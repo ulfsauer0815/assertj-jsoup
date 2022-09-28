@@ -74,7 +74,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("io.mockk:mockk:1.13.1")
+    testImplementation("io.mockk:mockk:1.13.2")
     testImplementation("org.opentest4j:opentest4j:1.2.0")
     val detektVersion: String by project
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
