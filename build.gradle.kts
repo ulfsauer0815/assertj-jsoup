@@ -21,7 +21,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version detektVersion
 
     // API compatibility
-    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.11.1"
+    id("org.jetbrains.kotlinx.binary-compatibility-validator") version "0.12.0"
 
     // code coverage
     jacoco
