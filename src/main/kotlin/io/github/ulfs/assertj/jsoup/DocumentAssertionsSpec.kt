@@ -2,6 +2,7 @@ package io.github.ulfs.assertj.jsoup
 
 import org.jsoup.nodes.Document
 
+@Suppress("detekt:ForbiddenPublicDataClass", "detekt:LibraryEntitiesShouldNotBePublic")
 @DocumentAssertionsMarker
 public data class DocumentAssertionsSpec(
     private val softAssertions: DocumentSoftAssertions,
