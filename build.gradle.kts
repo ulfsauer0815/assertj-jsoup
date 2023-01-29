@@ -78,6 +78,7 @@ dependencies {
     testImplementation("org.opentest4j:opentest4j:1.2.0")
     val detektVersion: String by project
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-rules-libraries:$detektVersion")
 }
 
 publishing {
@@ -139,7 +140,7 @@ nexusPublishing {
 }
 
 detekt {
-    toolVersion = "1.20.0"
+    toolVersion = "1.22.0"
     source = files(DEFAULT_SRC_DIR_KOTLIN)
     buildUponDefaultConfig = true
     config = files("$projectDir/config/detekt/detekt.yml")

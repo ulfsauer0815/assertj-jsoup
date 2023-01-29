@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
-@Suppress("detekt:LargeClass", "detekt:TooManyFunctions")
+@Suppress("detekt:LargeClass", "detekt:TooManyFunctions", "detekt:LibraryEntitiesShouldNotBePublic")
 public open class DocumentAssert(
     actual: Document?
 ) : AbstractAssert<DocumentAssert, Document>(actual, DocumentAssert::class.java) {
