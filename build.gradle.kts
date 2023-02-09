@@ -15,7 +15,7 @@ plugins {
     `maven-publish`
     signing
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
-    id("pl.allegro.tech.build.axion-release") version "1.14.3"
+    id("pl.allegro.tech.build.axion-release") version "1.14.4"
 
     // code analysis
     id("io.gitlab.arturbosch.detekt") version detektVersion
