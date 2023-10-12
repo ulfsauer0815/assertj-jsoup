@@ -25,7 +25,7 @@ plugins {
 
     // code coverage
     jacoco
-    id("com.github.nbaztec.coveralls-jacoco") version "1.2.16"
+    id("com.github.nbaztec.coveralls-jacoco") version "1.2.17"
 }
 
 group = "io.github.ulfs"
