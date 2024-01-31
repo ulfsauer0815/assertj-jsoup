@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
-    extra["detektVersion"] = "1.23.4"
+    extra["detektVersion"] = "1.23.5"
 }
 
 plugins {
