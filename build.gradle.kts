@@ -68,7 +68,7 @@ dependencies {
     implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("org.assertj:assertj-core:3.24.2")
+    implementation("org.assertj:assertj-core:3.25.3")
     implementation("org.jsoup:jsoup:1.15.3")
 
     testImplementation("org.jetbrains.kotlin:kotlin-test")
@@ -140,10 +140,10 @@ nexusPublishing {
 }
 
 detekt {
-    toolVersion = "1.22.0"
-    source = files(DEFAULT_SRC_DIR_KOTLIN)
+    toolVersion = "1.23.6"
+    config.setFrom("$projectDir/config/detekt/detekt.yml")
+    source.setFrom(DEFAULT_SRC_DIR_KOTLIN)
     buildUponDefaultConfig = true
-    config = files("$projectDir/config/detekt/detekt.yml")
     baseline = file("$projectDir/config/detekt/baseline.xml")
 }
 

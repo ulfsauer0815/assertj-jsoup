@@ -593,7 +593,8 @@ public open class DocumentAssert(
         )
 
     @Generated
-    @Suppress("warnings")
+    // XXX: Suppress detekt false positive
+    @Suppress("warnings", "detekt:UnusedPrivateMember")
     private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selections: Elements) =
         failWithMessage(
             "%nExpecting attribute%n" +
@@ -608,7 +609,8 @@ public open class DocumentAssert(
         )
 
     @Generated
-    @Suppress("warnings")
+    // XXX: Suppress detekt false positive
+    @Suppress("warnings", "detekt:UnusedPrivateMember")
     private inline fun failWithAttributeNotFound(attribute: String, cssSelector: String, selection: Element) =
         failWithMessage(
             "%nExpecting attribute%n" +
@@ -708,6 +710,8 @@ public open class DocumentAssert(
     private companion object {
         private fun maskSelection(selection: Elements) = selection.toString().prependIndent("  ")
 
+        // XXX: Suppress detekt false positive
+        @Suppress("detekt:UnusedPrivateMember")
         private fun maskSelection(selection: Element) = selection.toString().prependIndent("  ")
 
         private fun maskSelection(selection: List<String>) = selection.toString().prependIndent("  ")
