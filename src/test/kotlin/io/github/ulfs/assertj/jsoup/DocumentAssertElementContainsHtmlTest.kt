@@ -50,6 +50,7 @@ class DocumentAssertElementContainsHtmlTest {
     fun `should pass if element contains html`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">html<br>text</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
@@ -64,6 +65,7 @@ class DocumentAssertElementContainsHtmlTest {
     fun `should pass if element contains html in different form`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">html<br/>text</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
@@ -77,7 +79,8 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element contains nested html`() {
         // given
-        val document: Document = JsoupUtils.parse("""<div class="class"><p><span>text</span><span>html</span></p></div>""")
+        val document: Document =
+            JsoupUtils.parse("""<div class="class"><p><span>text</span><span>html</span></p></div>""")
 
         // when
         assertThat(document, true) {
@@ -91,7 +94,8 @@ class DocumentAssertElementContainsHtmlTest {
     @Test
     fun `should pass if element contains complex html`() {
         // given
-        val document: Document = JsoupUtils.parse("""<div class="class"><span><b>h</b>t<strong>m</strong>l</span></div>""")
+        val document: Document =
+            JsoupUtils.parse("""<div class="class"><span><b>h</b>t<strong>m</strong>l</span></div>""")
 
         // when
         assertThat(document, true) {
@@ -106,6 +110,7 @@ class DocumentAssertElementContainsHtmlTest {
     fun `should pass if element text is the entire html`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">html<br>text</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when / then
         assertThat(document, true) {
