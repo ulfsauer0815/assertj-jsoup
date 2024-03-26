@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion.VERSION_1_8
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
-    extra["detektVersion"] = "1.23.5"
+    extra["detektVersion"] = "1.23.6"
 }
 
 plugins {
@@ -25,7 +25,7 @@ plugins {
 
     // code coverage
     jacoco
-    id("com.github.nbaztec.coveralls-jacoco") version "1.2.18"
+    id("com.github.nbaztec.coveralls-jacoco") version "1.2.19"
 }
 
 group = "io.github.ulfs"
@@ -140,10 +140,10 @@ nexusPublishing {
 }
 
 detekt {
-    toolVersion = "1.22.0"
-    source = files(DEFAULT_SRC_DIR_KOTLIN)
+    toolVersion = "1.23.6"
+    config.setFrom("$projectDir/config/detekt/detekt.yml")
+    source.setFrom(DEFAULT_SRC_DIR_KOTLIN)
     buildUponDefaultConfig = true
-    config = files("$projectDir/config/detekt/detekt.yml")
     baseline = file("$projectDir/config/detekt/baseline.xml")
 }
 

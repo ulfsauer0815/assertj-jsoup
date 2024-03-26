@@ -120,7 +120,7 @@ class AssertionsTest {
         }
 
         // then
-        assertThat(documentAssert).isEqualTo(assert)
+        assertThat(documentAssert).isSameAs(assert)
         verify {
             anyConstructed<DocumentSoftAssertions>().assertThatDocument("html")
             anyConstructed<DocumentSoftAssertions>().assertAll()
@@ -142,7 +142,7 @@ class AssertionsTest {
         }
 
         // then
-        assertThat(documentAssert).isEqualTo(assert)
+        assertThat(documentAssert).isSameAs(assert)
         verify {
             anyConstructed<DocumentSoftAssertions>().assertThatDocument("html") wasNot called
             anyConstructed<DocumentSoftAssertions>().assertAll()
@@ -164,7 +164,7 @@ class AssertionsTest {
         }
 
         // then
-        assertThat(documentAssert).isEqualTo(assert)
+        assertThat(documentAssert).isSameAs(assert)
         verify {
             anyConstructed<DocumentSoftAssertions>().assertThat(document)
             anyConstructed<DocumentSoftAssertions>().assertAll()

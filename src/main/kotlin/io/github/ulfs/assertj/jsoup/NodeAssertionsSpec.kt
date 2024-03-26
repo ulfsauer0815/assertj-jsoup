@@ -34,7 +34,7 @@ public data class NodeAssertionsSpec(
     }
 
     public fun hasHtml(obj: Any?): NodeAssertionsSpec = apply {
-        softAssertions.assertThat(document).elementHasHtml(cssSelector, obj?.toString() ?: "")
+        softAssertions.assertThat(document).elementHasHtml(cssSelector, obj?.toString().orEmpty())
     }
 
     public fun containsText(substring: String): NodeAssertionsSpec = apply {
@@ -50,7 +50,7 @@ public data class NodeAssertionsSpec(
     }
 
     public fun hasText(obj: Any?): NodeAssertionsSpec = apply {
-        softAssertions.assertThat(document).elementHasText(cssSelector, obj?.toString() ?: "")
+        softAssertions.assertThat(document).elementHasText(cssSelector, obj?.toString().orEmpty())
     }
 
     public fun hasClass(name: String): NodeAssertionsSpec = apply {

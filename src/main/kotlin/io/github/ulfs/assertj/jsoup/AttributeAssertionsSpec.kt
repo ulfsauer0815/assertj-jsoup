@@ -27,7 +27,7 @@ public data class AttributeAssertionsSpec(
     }
 
     public fun hasText(obj: Any?): AttributeAssertionsSpec = apply {
-        hasText(obj?.toString() ?: "")
+        hasText(obj?.toString().orEmpty())
     }
 
     public fun containsText(substring: String): AttributeAssertionsSpec = apply {
