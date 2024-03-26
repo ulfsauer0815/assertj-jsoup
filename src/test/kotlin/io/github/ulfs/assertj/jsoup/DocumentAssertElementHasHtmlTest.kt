@@ -88,6 +88,7 @@ class DocumentAssertElementHasHtmlTest {
     fun `should pass if element has html`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">text<br>html</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
@@ -102,6 +103,7 @@ class DocumentAssertElementHasHtmlTest {
     fun `should pass if element has html in inner node`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class"><span>text<br>html</span></div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
@@ -130,6 +132,7 @@ class DocumentAssertElementHasHtmlTest {
     fun `should fail if element contains substring`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">text<br>html</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when / then
         assertThatThrownBy {
@@ -156,6 +159,7 @@ class DocumentAssertElementHasHtmlTest {
     fun `should fail if element contains different html`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">different<br>html</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when / then
         assertThatThrownBy {
@@ -188,6 +192,7 @@ class DocumentAssertElementHasHtmlTest {
             <div class="class">html<br>text</div>
             """.trimIndent()
         )
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
@@ -208,6 +213,7 @@ class DocumentAssertElementHasHtmlTest {
             <div class="class">html<br>text</div>
             """.trimIndent()
         )
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when / then
         assertThatThrownBy {
@@ -239,6 +245,7 @@ class DocumentAssertElementHasHtmlTest {
             <div class="class">really<br>long</div>
             """.trimIndent()
         )
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when / then
         assertThatThrownBy {
@@ -256,12 +263,8 @@ class DocumentAssertElementHasHtmlTest {
                 to be html
                   [html<br>text]
                 in list
-                  <div class="class">
-                   this<br>is
-                  </div>
-                  <div class="class">
-                   really<br>long
-                  </div>
+                  <div class="class">this<br>is</div>
+                  <div class="class">really<br>long</div>
                 """.trimIndent()
             )
     }
@@ -277,6 +280,7 @@ class DocumentAssertElementHasHtmlTest {
             <div class="class">but<br>more</div>
             """.trimIndent()
         )
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when / then
         assertThat(document, true) {

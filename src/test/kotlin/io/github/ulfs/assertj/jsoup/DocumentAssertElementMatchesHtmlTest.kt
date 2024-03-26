@@ -50,6 +50,7 @@ class DocumentAssertElementMatchesHtmlTest {
     fun `should pass if element html matches`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class">text<br>html</div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
@@ -64,6 +65,7 @@ class DocumentAssertElementMatchesHtmlTest {
     fun `should pass if element text matches in inner node`() {
         // given
         val document: Document = JsoupUtils.parse("""<div class="class"><span>text<br>html</span></div>""")
+            .outputSettings(Document.OutputSettings().prettyPrint(false))
 
         // when
         assertThat(document, true) {
