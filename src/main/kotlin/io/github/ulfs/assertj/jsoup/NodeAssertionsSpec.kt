@@ -78,5 +78,9 @@ public data class NodeAssertionsSpec(
             spec.assert()
         }
 
+    public fun hasTag(tagName: String): NodeAssertionsSpec = apply {
+        softAssertions.assertThat(document).elementHasTag(cssSelector, tagName)
+    }
+
     public fun attribute(attributeName: String): NodeAssertionsSpec = attribute(attributeName) { exists() }
 }
