@@ -314,6 +314,33 @@ public open class DocumentAssert(
         }
     }
 
+    public fun elementHasTag(cssSelector: String, tagName: String): DocumentAssert = apply {
+        isNotNull
+
+        val selection = actual.select(cssSelector)
+        if (selection.isEmpty()) {
+            failWithElementNotFound(cssSelector)
+            return this
+        }
+
+        selection.forEach {
+            if (it.tagName() != tagName) {
+                failWithMessage(
+                    "%nExpecting element for%n" +
+                            "  <%s>%n" +
+                            "to be of tag%n" +
+                            "  <%s>%n" +
+                            "but was%n" +
+                            "  <%s>",
+                    cssSelector,
+                    tagName,
+                    it.tagName(),
+                    maskSelection(selection)
+                )
+            }
+        }
+    }
+
     public fun elementContainsText(cssSelector: String, substring: String): DocumentAssert = apply {
         isNotNull
 
