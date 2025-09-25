@@ -299,6 +299,19 @@ class NodeAssertionsSpecTest {
         verify { softAssertions.assertThat(any<Document>()).elementAttributeExists("selector", "attr") }
     }
 
+    @Test
+    fun `should call elementHasTag`() {
+        // given
+        every { softAssertions.assertThat(any<Document>()).elementHasTag(any(), any()) } returns dummySoftAssertions()
+
+        val spec = spec()
+
+        // when
+        spec.hasTag("tag")
+
+        // then
+        verify { softAssertions.assertThat(any<Document>()).elementHasTag("selector", "tag") }
+    }
 
     private fun spec() = NodeAssertionsSpec(
         softAssertions = softAssertions,

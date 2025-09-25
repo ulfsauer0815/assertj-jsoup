@@ -47,6 +47,7 @@ public class io/github/ulfs/assertj/jsoup/DocumentAssert : org/assertj/core/api/
 	public final fun elementHasClass (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasHtml (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasHtml (Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
+	public final fun elementHasTag (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasText (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementHasText (Ljava/lang/String;[Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
 	public final fun elementMatchesHtml (Ljava/lang/String;Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/DocumentAssert;
@@ -90,6 +91,7 @@ public final class io/github/ulfs/assertj/jsoup/NodeAssertionsSpec {
 	public final fun hasHtml (Ljava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasHtml (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasHtml ([Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
+	public final fun hasTag (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasText (Ljava/lang/Object;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasText (Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
 	public final fun hasText ([Ljava/lang/String;)Lio/github/ulfs/assertj/jsoup/NodeAssertionsSpec;
