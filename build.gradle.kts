@@ -9,7 +9,7 @@ buildscript {
 plugins {
     val detektVersion: String by project
 
-    kotlin("jvm") version "1.9.24"
+    kotlin("jvm") version "2.3.21"
     `java-library`
 
     `maven-publish`
